@@ -35,10 +35,10 @@
 						const title = document.currentScript.parentElement;
 						const titletext = title.innerText;
 						let i = 0;
-						title.textContent="";
+						title.innerText="";
 						const typeChar = () => {
 							i++;
-							title.textContent=titletext.substring(0, i);
+							title.innerText=titletext.substring(0, i);
 							if(i > titletext.length) return;
 							setTimeout(typeChar,200);
 						}

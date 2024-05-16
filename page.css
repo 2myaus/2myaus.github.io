@@ -19,9 +19,9 @@ body{
 .window{
 	min-width: 15vw;
 	min-height: 8vw;
-	
+
 	background-color:#c0c0c0;
-	
+
 	position:absolute;
 	border: 0.2vw #d2d5d9 solid;
 	border-top-color: #f2f3f2;
@@ -31,14 +31,28 @@ body{
 	box-shadow: 0.1vw 0.1vw 0.05vw #a4a4a6, -0.1vw 0.1vw 0.05vw #a4a4a6, -0.1vw -0.1vw 0.05vw #a4a4a6, 0.1vw -0.1vw 0.05vw #a4a4a6;
   z-index: 2;
 	transform-origin: left top;
-	
+
+	transition: transform 0.2s linear, opacity 0.2s linear;
+
 	animation: 0.2s linear window-open;
 	animation-delay: 0.8s;
 	animation-fill-mode: backwards;
 }
 
+.window.closed{
+	transform:scale(0);
+	opacity:0.4;
+}
+
 @keyframes window-open{
 	from{
+		transform: scale(0);
+		opacity:0.4;
+	}
+}
+
+@keyframes window-close{
+	to{
 		transform: scale(0);
 		opacity:0.4;
 	}
