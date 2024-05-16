@@ -23,9 +23,6 @@ body{
 	background-color:#c0c0c0;
 	
 	position:absolute;
-	top:100px;
-	left:100px;
-	animation-fill-mode: backwards;
 	border: 0.2vw #d2d5d9 solid;
 	border-top-color: #f2f3f2;
 	border-left-color: #f2f3f2;
@@ -33,9 +30,22 @@ body{
 	border-radius: 0.1vw;
 	box-shadow: 0.1vw 0.1vw 0.05vw #a4a4a6, -0.1vw 0.1vw 0.05vw #a4a4a6, -0.1vw -0.1vw 0.05vw #a4a4a6, 0.1vw -0.1vw 0.05vw #a4a4a6;
   z-index: 2;
+	transform-origin: left top;
+	
+	animation: 0.2s linear window-open;
+	animation-delay: 0.8s;
+	animation-fill-mode: backwards;
+}
+
+@keyframes window-open{
+	from{
+		transform: scale(0);
+		opacity:0.4;
+	}
 }
 
 .window .windowhead{
+	user-select: none;
 	height:2vw;
 	width:100%;
 	display:flex;
@@ -130,4 +140,19 @@ body{
 	padding-left: 40vw;
 	background-color:#0008;
 	mix-blend-mode: overlay;
+}
+
+.page1 .window1{
+	top:6vh;
+	left:6vw;
+	width:35vw;
+	height:40vw;
+}
+
+.page1 .window2{
+	top:12vh;
+	right:6vw;
+	width:50vw;
+	height:30vw;
+	animation-delay: 1s;
 }
