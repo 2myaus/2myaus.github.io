@@ -6,6 +6,10 @@
     font-family: Kitty-M;
     src: url("PerfectDOSKittyM.ttf");
 }
+@font-face {
+    font-family: Marlett;
+    src: url("marlett.ttf");
+}
 
 body{
 	margin:0px;
@@ -55,6 +59,30 @@ body{
 	background-color: #cbcbcb;
 	box-sizing: border-box;
 	box-shadow: 0.1vw 0.1vw 0.05vw #0004;
+	font-family: Marlett;
+	font-size: 1vw;
+	line-height: 0.76vw;
+	text-align: center;
+}
+
+.window .windowhead .title{
+	color:white;
+	font-family: Perfect-Dos;
+	font-size: 1.2vw;
+	position: absolute;
+	text-transform: uppercase;
+	left:2.2vw;
+}
+
+.window .windowhead .icon{
+	color:white;
+	font-family: Marlett;
+	font-size: 2vw;
+	position: absolute;
+	left:0.2vw;
+	top:0.2vw;
+	height:1.6vw;
+	line-height: 1.2vw;
 }
 
 .page{
