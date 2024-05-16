@@ -1,7 +1,7 @@
-const canvas = document.getElementById("citycanvas");
-const c2 = document.getElementById("lightingcanvas");
-
 const drawCity = () => {
+	const canvas = document.getElementById("citycanvas");
+	const c2 = document.getElementById("lightingcanvas");
+
 	canvas.height = canvas.width * canvas.offsetHeight / canvas.offsetWidth;
 
 	const wid = canvas.width;

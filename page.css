@@ -12,10 +12,60 @@ body{
 	transition: all 0s;
 }
 
+.window{
+	min-width: 15vw;
+	min-height: 8vw;
+	
+	background-color:#c0c0c0;
+	
+	position:absolute;
+	top:100px;
+	left:100px;
+	animation-fill-mode: backwards;
+	border: 0.2vw #d2d5d9 solid;
+	border-top-color: #f2f3f2;
+	border-left-color: #f2f3f2;
+	box-sizing: border-box;
+	border-radius: 0.1vw;
+	box-shadow: 0.1vw 0.1vw 0.05vw #a4a4a6, -0.1vw 0.1vw 0.05vw #a4a4a6, -0.1vw -0.1vw 0.05vw #a4a4a6, 0.1vw -0.1vw 0.05vw #a4a4a6;
+  z-index: 2;
+}
+
+.window .windowhead{
+	height:2vw;
+	width:100%;
+	display:flex;
+	flex-direction: row;
+	justify-content: right;
+	align-items: center;
+	gap:0.2vw;
+	padding-right: 0.45vw;
+	box-sizing: border-box;
+	border-radius: 0.1vw;
+	background-color:#2a3493;
+	border: 0.12vw #0004 solid;
+}
+
+.window .windowhead .button{
+	width:1.1vw;
+	height:1vw;
+	border: 0.2vw #d2d5d9 solid;
+	border-top-color: #f2f3f2;
+	border-left-color: #f2f3f2;
+	background-color: #cbcbcb;
+	box-sizing: border-box;
+	box-shadow: 0.1vw 0.1vw 0.05vw #0004;
+}
+
 .page{
 	position:sticky;
 	min-height: 100vh;
 	overflow-x:hidden;
+}
+
+.page1{
+	height:100vh;
+	overflow:clip;
 }
 
 .page1 #citycanvas{
@@ -36,7 +86,7 @@ body{
 	height: 100%;
 }
 
-.page1 .title{
+.page1 .dark-overlay{
 	position: absolute;
 	top:0;
 	left:0;
@@ -44,7 +94,7 @@ body{
 	height:100%;
 	text-align: left;
 	padding-top: 42vh;
-	color:#ffff;
+	color:#fff2;
 	font-size: 6vw;
 	font-weight: bolder;
 	filter:blur(0.5px);
