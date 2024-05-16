@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="page.css" />
+	</head>
+	<body>
+		<div class="page page1">
+			<canvas id="lightingcanvas" width="2000"></canvas>
+			<canvas id="citycanvas" width="2000"></canvas>
+			<script src="citygencvs.js"></script>
+
+			<div class="title">myaumyau.dotdev
+				<script>
+					(()=>{
+						const title = document.currentScript.parentElement;
+						const titletext = title.innerText;
+						let i = 0;
+						title.textContent="";
+						const typeChar = () => {
+							i++;
+							title.textContent=titletext.substring(0, i);
+							if(i > titletext.length) return;
+							setTimeout(typeChar,200);
+						}
+						setTimeout(typeChar, 400);
+					})();
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+@font-face {
+    font-family: Perfect-Dos;
+    src: url("Perfect\ DOS\ VGA\ 437\ Win.ttf");
+}
+@font-face {
+    font-family: Kitty-M;
+    src: url("PerfectDOSKittyM.ttf");
+}
+
+body{
+	margin:0px;
+	transition: all 0s;
+}
+
+.page{
+	position:sticky;
+	min-height: 100vh;
+	overflow-x:hidden;
+}
+
+.page1 #citycanvas{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+
+.page1 #lightingcanvas{
+	position: absolute;
+	top:0;
+	left:0;
+	z-index: 1;
+	mix-blend-mode: color;
+	width: 100%;
+	height: 100%;
+}
+
+.page1 .title{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	text-align: left;
+	padding-top: 42vh;
+	color:#ffff;
+	font-size: 6vw;
+	font-weight: bolder;
+	filter:blur(0.5px);
+	font-family: Kitty-M;
+	padding-left: 40vw;
+	background-color:#0008;
+	mix-blend-mode: overlay;
+}
