@@ -9,12 +9,12 @@ const drawCity = () => {
 
 	const ctx=canvas.getContext("2d");
 
-	let darkClr = "#434";
-	let lightClr = "#675";
-	let windowClr = "#ff4";
-	let skyClrBase="rgb(255,23,95)";
-	let skyClrMid="#483ba0";
-	let skyClrTop="#281ba0";
+	let darkClr = "#201820";
+	let lightClr = "#445039";
+	let windowClr = "#ffff20";
+	let skyClrBase="#ff0b2c";
+	let skyClrMid="#351857";
+	let skyClrTop="#150e71";
 
 	let scale = 0.1;
 
@@ -164,14 +164,11 @@ const drawCity = () => {
 
 		float b = sin(3.141*len/t) * (4.0*t/(len+4.0*t))+0.7;
 		if((mod((floor(fragCoord.x/4.0)), 2.0)!=mod((floor(fragCoord.y/4.0)),2.0))){
-			b *= abs(b) * 0.6;
+			b *= abs(b) * 0.4;
 		}
 		b *= fragCoord.y/u_resolution.y;
-		vec3 clr = vec3(1.0, 0.18, 0.74);
-		if(b < 0.0){
-			b *= -1.0;
-			//clr = vec3(0.6,0.18,1.0);
-		}
+		vec3 clr = vec3(0.90, 0.51, 0.78);
+		b *= 0.8;
 		gl_FragColor = vec4(clr, b);
 	}
 	`;

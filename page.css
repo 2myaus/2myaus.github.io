@@ -37,6 +37,7 @@ body{
 	animation: 0.2s linear window-open;
 	animation-delay: 0.8s;
 	animation-fill-mode: backwards;
+	z-index: 10;
 }
 
 .window.closed{
@@ -183,8 +184,10 @@ body{
 	filter:blur(0.5px);
 	font-family: Kitty-M;
 	padding-left: 40vw;
-	background-color:#0008;
+	--background-color:#0008;
 	mix-blend-mode: overlay;
+
+	z-index: 2;
 }
 
 .page1 .window1{
