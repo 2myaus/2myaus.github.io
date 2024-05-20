@@ -1,0 +1,113 @@
+.page2{
+    background-color:#000;
+    --line-weight: 0.6vh;
+    
+    --bottom-height: 6vh;
+    --garage-door-width: 83.5vh;
+    --garage-door-top-gap: 20vh;
+    --garage-door-slider-wid: 2.3%;
+    
+    --tile-wall-top-gap: 37.1%;
+    --tile-bg-size: 7.43vh;
+}
+
+.page2 .wall{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:var(--bottom-height);
+    background: linear-gradient(190deg, #c557d1, #df6ac5 20%, #8023f3 100%);
+}
+
+.page2 .wall .garagedoor{
+    position: absolute;
+    top:var(--garage-door-top-gap);
+    width: var(--garage-door-width);
+    left: calc(50% - var(--garage-door-width) * 0.5);
+    right:var(--garage-door-side-gap);
+    bottom:0;
+
+    background: linear-gradient(#000f 0, #000f var(--line-weight), #0000 var(--line-weight), #0000);
+    background-size: calc(100% - var(--garage-door-slider-wid) * 2) 4.25%;
+    background-position: 50% 3%;
+    background-repeat: repeat-y;
+    
+}
+
+.page2 .wall .garagedoor::before{
+    position: absolute;
+    left:0;
+    top:0;
+    right:calc(100% - var(--garage-door-slider-wid));
+    bottom:0;
+    content:"";
+    background: linear-gradient(90deg, #000f 0%, #000f var(--line-weight), #0000 var(--line-weight), #0000 calc(100% - var(--line-weight)), #000f calc(100% - var(--line-weight)));
+}
+
+.page2 .wall .garagedoor::after{
+    position: absolute;
+    right:0;
+    top:0;
+    left:calc(100% - var(--garage-door-slider-wid));
+    bottom:0;
+    content:"";
+    background: linear-gradient(90deg, #000f 0%, #000f var(--line-weight), #0000 var(--line-weight), #0000 calc(100% - var(--line-weight)), #000f calc(100% - var(--line-weight)));
+}
+
+.page2 .wall:before{
+    position: absolute;
+    left:0;
+    right:calc(50% + var(--garage-door-width) * 0.5);
+    top:var(--tile-wall-top-gap);
+    bottom: 0;
+    content:"";
+    background: linear-gradient(#000f 0, #000f var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, #000f 0, #000f var(--line-weight), #0000 var(--line-weight));
+    background-size: var(--tile-bg-size) var(--tile-bg-size), var(--tile-bg-size) var(--tile-bg-size);
+    background-position-x:calc(50vw - 49vh);
+}
+
+.page2 .wall:after{
+    position: absolute;
+    right:0;
+    left:calc(50% + var(--garage-door-width) * 0.5);
+    top:var(--tile-wall-top-gap);
+    bottom: 0;
+    content:"";
+    background: linear-gradient(#000f 0, #000f var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, #000f 0, #000f var(--line-weight), #0000 var(--line-weight));
+    background-size: var(--tile-bg-size) var(--tile-bg-size), var(--tile-bg-size) var(--tile-bg-size);
+    background-position: 6vh 0;
+}
+
+.page2 .v1{
+
+}
+
+.page2 .v2{
+
+}
+
+.page2 .credit{
+    z-index: 1000;
+    position: absolute;
+    left:0.5vw;
+    bottom:0.5vh;
+    font-size: 2vh;
+    font-family: Perfect-Dos;
+    mix-blend-mode: difference;
+}
+
+.page2 .credit *{
+    color:white;
+}
+
+.page2 .ref{
+    position: absolute;
+    top:0;
+    left:50%;
+    height:100%;
+    transform: translateX(-50%);
+    z-index: 100;
+    opacity: 0.5;
+    pointer-events: none;
+}

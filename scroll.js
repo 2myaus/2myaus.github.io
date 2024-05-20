@@ -1,19 +1,35 @@
 let lastTime = 0;
 let lastScroll = -9999;
 
-const animFunc = (time) => {
+let lastY = 0;
+let scrollDir = 1;
+window.addEventListener("scroll", (event) => {
+	if(window.scrollY > lastY){
+		scrollDir = 1;
+	}
+	else if(window.scrollY < lastY){
+		scrollDir = -1;
+	}
+	lastY = window.scrollY;
+	return;
+});
 
-	const target = Math.round(window.scrollY/window.innerHeight)*window.innerHeight;
+const animFunc = (time) => {
+	let target = window.scrollY/window.innerHeight;
+
+	if(scrollDir == 1){
+		target = Math.ceil(target);
+	}
+	else{
+		target = Math.floor(target);
+	}
+	target *= window.innerHeight;
+
 	const dTime = (time-lastTime)*0.001;
 
 	lastTime = time;
 
-	if(time-lastScroll < 400){
-		window.requestAnimationFrame(animFunc);
-		return;
-	}
-
-	const vel = window.innerHeight * 1.2; //Pixels per second
+	const vel = window.innerHeight * 2; //Pixels per second
 
 	let currentY = window.scrollY
 
@@ -31,6 +47,6 @@ const animFunc = (time) => {
 	}
 	window.scrollTo(window.scrollX, currentY);
 	window.requestAnimationFrame(animFunc);
-}
+};
 
 window.requestAnimationFrame(animFunc);
