@@ -1,14 +1,20 @@
 .page2{
     background-color:#000;
     --line-weight: 0.6vh;
-    
+
     --bottom-height: 6vh;
     --garage-door-width: 83.5vh;
     --garage-door-top-gap: 20vh;
     --garage-door-slider-wid: 2.3%;
-    
+
+    --portico-height: 15vh;
+    --portico-width: 85vh;
+
     --tile-wall-top-gap: 37.1%;
     --tile-bg-size: 7.43vh;
+
+    transform: perspective(100vh);
+    transform-style: preserve-3d;
 }
 
 .page2 .wall{
@@ -32,7 +38,7 @@
     background-size: calc(100% - var(--garage-door-slider-wid) * 2) 4.25%;
     background-position: 50% 3%;
     background-repeat: repeat-y;
-    
+
 }
 
 .page2 .wall .garagedoor::before{
@@ -95,6 +101,21 @@
     font-size: 2vh;
     font-family: Perfect-Dos;
     mix-blend-mode: difference;
+}
+
+.page2 .portico{
+    position: absolute;
+
+    left: calc(50% - var(--portico-width) * 0.5);
+    top: calc(var(--garage-door-top-gap) - var(--portico-height) * 0.5);
+
+    width: var(--portico-width);
+    height: var(--portico-height);
+
+    box-sizing: border-box;
+    border: var(--line-weight) solid #000;
+
+    transform: translateZ(16vh) translateY(-1.4vh) rotateX(15deg);
 }
 
 .page2 .credit *{
