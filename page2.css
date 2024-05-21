@@ -9,9 +9,21 @@
 
     --portico-height: 15vh;
     --portico-width: 85vh;
+    --portico-angle: 15deg;
+    --portico-depth: 16vh;
 
     --tile-wall-top-gap: 37.1%;
     --tile-bg-size: 7.43vh;
+
+    --machine1-width: 27vh;
+    --machine1-height: 57vh;
+
+    --machine2-width: 32vh;
+    --machine2-height: 57vh;
+
+    --machine-gap: 1.5vh;
+    --machine-depth: 6vh;
+    --machine-center-offset: 0.6vh;
 
     transform: perspective(100vh);
     transform-style: preserve-3d;
@@ -86,11 +98,27 @@
 }
 
 .page2 .v1{
+    box-sizing: border-box;
+    border: var(--line-weight) solid #f00;
+    width:var(--machine1-width);
+    height:var(--machine1-height);
+    position:absolute;
+    bottom:var(--bottom-height);
+    left: calc(50% + var(--machine-gap)*0.5);
 
+    transform:translateX(var(--machine-center-offset)) translateZ(var(--machine-depth));
 }
 
 .page2 .v2{
+    box-sizing: border-box;
+    border: var(--line-weight) solid #0f0;
+    width:var(--machine2-width);
+    height:var(--machine2-height);
+    position:absolute;
+    bottom:var(--bottom-height);
+    right: calc(50% + var(--machine-gap)*0.5);
 
+    transform:translateX(var(--machine-center-offset)) translateZ(var(--machine-depth));
 }
 
 .page2 .credit{
@@ -115,7 +143,34 @@
     box-sizing: border-box;
     border: var(--line-weight) solid #000;
 
-    transform: translateZ(16vh) translateY(-1.4vh) rotateX(15deg);
+    transform: translateZ(var(--portico-depth)) translateY(-1.4vh) rotateX(var(--portico-angle));
+    transform-style: preserve-3d;
+}
+
+.page2 .portico::before{
+    position:absolute;
+    box-sizing: border-box;
+    top:0;
+    left:0;
+    height:104%;/*calc(100% * cos(var(--portico-angle)));*/
+    width:20vh;
+    content:"";
+    border:inherit;
+    transform-origin: left;
+    transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(90deg) skewX(calc(-1 * var(--portico-angle))) translateY(-0.15vh) translateZ(-0.4vh);
+}
+
+.page2 .portico::after{
+    position:absolute;
+    box-sizing: border-box;
+    top:0;
+    right:0;
+    height:104%;/*calc(100% * cos(var(--portico-angle)));*/
+    width:20vh;
+    content:"";
+    border:inherit;
+    transform-origin: right;
+    transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(-90deg) skewX(var(--portico-angle)) translateY(-0.15vh) translateZ(-0.4vh);
 }
 
 .page2 .credit *{
