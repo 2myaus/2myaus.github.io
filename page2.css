@@ -1,5 +1,4 @@
 .page2{
-    background-color:#000;
     --line-weight: 0.6vh;
 
     --bottom-height: 6vh;
@@ -13,7 +12,9 @@
     --portico-depth: 16vh;
 
     --tile-wall-top-gap: 37.1%;
-    --tile-bg-size: 7.43vh;
+    --tile-bg-size: 7.32vh;
+    
+    --floor-tile-size: 6vh;
 
     --machine1-width: 27vh;
     --machine1-height: 57vh;
@@ -115,6 +116,27 @@
     transform:translateX(var(--machine-center-offset)) translateZ(var(--machine-depth));
 }
 
+.page2 .v1 .mainwindow{
+    position:absolute;
+    top:4%;
+    left:5%;
+    width:78%;
+    height:52%;
+    box-sizing: border-box;
+    border: var(--line-weight) solid #000;
+}
+
+.page2 .v1 .droparea{
+    position:absolute;
+    bottom:15%;
+    left:13%;
+    width:49%;
+    height:17%;
+    box-sizing: border-box;
+    border: var(--line-weight) solid #000;
+}
+
+
 .page2 .v2{
     box-sizing: border-box;
     border: var(--line-weight) solid #0f0;
@@ -125,6 +147,26 @@
     right: calc(50% + var(--machine-gap)*0.5);
 
     transform:translateX(var(--machine-center-offset)) translateZ(var(--machine-depth));
+}
+
+.page2 .v2 .mainwindow{
+    position:absolute;
+    top:4%;
+    left:5%;
+    width:92%;
+    height:52%;
+    box-sizing: border-box;
+    border: var(--line-weight) solid #000;
+}
+
+.page2 .v2 .droparea{
+    position:absolute;
+    bottom:14.4%;
+    left:10%;
+    width:64%;
+    height:18.5%;
+    box-sizing: border-box;
+    border: var(--line-weight) solid #000;
 }
 
 .page2 .postcontainer{
@@ -189,6 +231,21 @@
     border:inherit;
     transform-origin: right;
     transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(-90deg) skewX(var(--portico-angle)) translateY(-0.15vh) translateZ(-0.4vh);
+}
+
+.page2 .floor{
+    position: absolute;
+    left:-50%;
+    right:-50%;
+    bottom: 0;
+    height:100vh;
+    transform-origin: bottom;
+    
+    content:"";
+    background: linear-gradient(#000f 0, #000f var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, #000f 0, #000f var(--line-weight), #0000 var(--line-weight)), linear-gradient(190deg, #c557d1, #df6ac5 20%, #8023f3 100%);
+    background-size: var(--floor-tile-size) var(--floor-tile-size), var(--floor-tile-size) var(--floor-tile-size), 100% 100%;
+    
+    transform:rotateX(90deg);
 }
 
 .page2 .credit *{
