@@ -1,4 +1,5 @@
 .page2{
+    --line-color: #000;
     --line-weight: 0.6vh;
 
     --bottom-height: 6vh;
@@ -53,7 +54,7 @@
     right:var(--garage-door-side-gap);
     bottom:0;
 
-    background: linear-gradient(#000f 0, #000f var(--line-weight), #0000 var(--line-weight), #0000);
+    background: linear-gradient(var(--line-color) 0, var(--line-color) var(--line-weight), #0000 var(--line-weight), #0000);
     background-size: calc(100% - var(--garage-door-slider-wid) * 2) 4.25%;
     background-position: 50% 3%;
     background-repeat: repeat-y;
@@ -67,7 +68,7 @@
     right:calc(100% - var(--garage-door-slider-wid));
     bottom:0;
     content:"";
-    background: linear-gradient(90deg, #000f 0%, #000f var(--line-weight), #0000 var(--line-weight), #0000 calc(100% - var(--line-weight)), #000f calc(100% - var(--line-weight)));
+    background: linear-gradient(90deg, var(--line-color) 0%, var(--line-color) var(--line-weight), #0000 var(--line-weight), #0000 calc(100% - var(--line-weight)), var(--line-color) calc(100% - var(--line-weight)));
 }
 
 .page2 .wall .garagedoor::after{
@@ -77,7 +78,7 @@
     left:calc(100% - var(--garage-door-slider-wid));
     bottom:0;
     content:"";
-    background: linear-gradient(90deg, #000f 0%, #000f var(--line-weight), #0000 var(--line-weight), #0000 calc(100% - var(--line-weight)), #000f calc(100% - var(--line-weight)));
+    background: linear-gradient(90deg, #000f 0%, #000f var(--line-weight), #0000 var(--line-weight), #0000 calc(100% - var(--line-weight)), var(--line-color) calc(100% - var(--line-weight)));
 }
 
 .page2 .wall:before{
@@ -87,7 +88,7 @@
     top:var(--tile-wall-top-gap);
     bottom: 0;
     content:"";
-    background: linear-gradient(#000f 0, #000f var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, #000f 0, #000f var(--line-weight), #0000 var(--line-weight));
+    background: linear-gradient(var(--line-color) 0, var(--line-color) var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, var(--line-color) 0, var(--line-color) var(--line-weight), #0000 var(--line-weight));
     background-size: var(--tile-bg-size) var(--tile-bg-size), var(--tile-bg-size) var(--tile-bg-size);
     background-position-x:calc(50vw - 49vh);
 }
@@ -99,14 +100,14 @@
     top:var(--tile-wall-top-gap);
     bottom: 0;
     content:"";
-    background: linear-gradient(#000f 0, #000f var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, #000f 0, #000f var(--line-weight), #0000 var(--line-weight));
+    background: linear-gradient(var(--line-color) 0, var(--line-color) var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, var(--line-color) 0, var(--line-color) var(--line-weight), #0000 var(--line-weight));
     background-size: var(--tile-bg-size) var(--tile-bg-size), var(--tile-bg-size) var(--tile-bg-size);
     background-position: 6vh 0;
 }
 
 .page2 .v1{
     box-sizing: border-box;
-    border: var(--line-weight) solid #f00;
+    border: var(--line-weight) solid var(--line-color);
     width:var(--machine1-width);
     height:var(--machine1-height);
     position:absolute;
@@ -123,7 +124,7 @@
     width:78%;
     height:52%;
     box-sizing: border-box;
-    border: var(--line-weight) solid #000;
+    border: var(--line-weight) solid var(--line-color);
 }
 
 .page2 .v1 .droparea{
@@ -133,13 +134,13 @@
     width:49%;
     height:17%;
     box-sizing: border-box;
-    border: var(--line-weight) solid #000;
+    border: var(--line-weight) solid var(--line-color);
 }
 
 
 .page2 .v2{
     box-sizing: border-box;
-    border: var(--line-weight) solid #0f0;
+    border: var(--line-weight) solid var(--line-color);
     width:var(--machine2-width);
     height:var(--machine2-height);
     position:absolute;
@@ -156,7 +157,7 @@
     width:92%;
     height:52%;
     box-sizing: border-box;
-    border: var(--line-weight) solid #000;
+    border: var(--line-weight) solid var(--line-color);
 }
 
 .page2 .v2 .droparea{
@@ -166,7 +167,7 @@
     width:64%;
     height:18.5%;
     box-sizing: border-box;
-    border: var(--line-weight) solid #000;
+    border: var(--line-weight) solid var(--line-color);
 }
 
 .page2 .postcontainer{
@@ -176,7 +177,7 @@
     bottom: var(--post-container-base-height);
     width: var(--post-container-width);
     height: var(--post-container-height);
-    border: var(--line-weight) solid #ff0;
+    border: var(--line-weight) solid var(--line-color);
     
     transform:translateZ(var(--post-container-depth));
 }
@@ -201,7 +202,7 @@
     height: var(--portico-height);
 
     box-sizing: border-box;
-    border: var(--line-weight) solid #000;
+    border: var(--line-weight) solid var(--line-color);
 
     transform: translateZ(var(--portico-depth)) translateY(-1.4vh) rotateX(var(--portico-angle));
     transform-style: preserve-3d;
@@ -242,7 +243,7 @@
     transform-origin: bottom;
     
     content:"";
-    background: linear-gradient(#000f 0, #000f var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, #000f 0, #000f var(--line-weight), #0000 var(--line-weight)), linear-gradient(190deg, #c557d1, #df6ac5 20%, #8023f3 100%);
+    background: linear-gradient(var(--line-color) 0, var(--line-color) var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, var(--line-color) 0, var(--line-color) var(--line-weight), #0000 var(--line-weight)), linear-gradient(190deg, #c557d1, #df6ac5 20%, #8023f3 100%);
     background-size: var(--floor-tile-size) var(--floor-tile-size), var(--floor-tile-size) var(--floor-tile-size), 100% 100%;
     
     transform:rotateX(90deg);
