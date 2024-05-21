@@ -115,6 +115,8 @@
     left: calc(50% + var(--machine-gap)*0.5);
 
     transform:translateX(var(--machine-center-offset)) translateZ(var(--machine-depth));
+
+    background: linear-gradient(-100deg, #f078b9, #ac63e2);
 }
 
 .page2 .v1 .mainwindow{
@@ -148,6 +150,8 @@
     right: calc(50% + var(--machine-gap)*0.5);
 
     transform:translateX(var(--machine-center-offset)) translateZ(var(--machine-depth));
+
+    background: linear-gradient(-100deg, #c264f3, #813ce5);
 }
 
 .page2 .v2 .mainwindow{
@@ -206,6 +210,8 @@
 
     transform: translateZ(var(--portico-depth)) translateY(-1.4vh) rotateX(var(--portico-angle));
     transform-style: preserve-3d;
+    
+    background: linear-gradient(195deg, #f46698 20%, #651690);
 }
 
 .page2 .portico::before{
