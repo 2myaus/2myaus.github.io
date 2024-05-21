@@ -24,6 +24,12 @@
     --machine-gap: 1.5vh;
     --machine-depth: 6vh;
     --machine-center-offset: 0.6vh;
+    
+    --post-container-pos: 31vh;
+    --post-container-width: 11vh;
+    --post-container-height: 16.4vh;
+    --post-container-base-height: 27.1vh;
+    --post-container-depth: 3vh;
 
     transform: perspective(100vh);
     transform-style: preserve-3d;
@@ -119,6 +125,18 @@
     right: calc(50% + var(--machine-gap)*0.5);
 
     transform:translateX(var(--machine-center-offset)) translateZ(var(--machine-depth));
+}
+
+.page2 .postcontainer{
+    box-sizing: border-box;
+    position: absolute;
+    left:calc(50% + var(--post-container-pos));
+    bottom: var(--post-container-base-height);
+    width: var(--post-container-width);
+    height: var(--post-container-height);
+    border: var(--line-weight) solid #ff0;
+    
+    transform:translateZ(var(--post-container-depth));
 }
 
 .page2 .credit{
