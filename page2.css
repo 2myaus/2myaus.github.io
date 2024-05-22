@@ -15,7 +15,7 @@
     --tile-wall-top-gap: 37.1%;
     --tile-bg-size: 7.32vh;
     
-    --floor-tile-size: 6vh;
+    --floor-tile-size: 4vh;
 
     --machine1-width: 27vh;
     --machine1-height: 57vh;
@@ -252,7 +252,7 @@
     background: linear-gradient(var(--line-color) 0, var(--line-color) var(--line-weight), #0000 var(--line-weight)), linear-gradient(90deg, var(--line-color) 0, var(--line-color) var(--line-weight), #0000 var(--line-weight)), linear-gradient(190deg, #c557d1, #df6ac5 20%, #8023f3 100%);
     background-size: var(--floor-tile-size) var(--floor-tile-size), var(--floor-tile-size) var(--floor-tile-size), 100% 100%;
     
-    transform:rotateX(90deg);
+    transform:rotateX(90deg) translateZ(var(--bottom-height)) translateY(calc(var(--bottom-height) * 4));
 }
 
 .page2 .credit *{
