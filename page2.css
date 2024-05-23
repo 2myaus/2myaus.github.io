@@ -37,6 +37,12 @@
 
     transform: perspective(100vh);
     transform-style: preserve-3d;
+    
+    transition: transform 1s ease-in-out;
+}
+
+.page2.focus{
+    transform: perspective(100vh) translateZ(45vh) translateY(-12vh) translateX(2vh);
 }
 
 .page2 .wall{
@@ -254,6 +260,7 @@
     border-left: var(--line-weight) solid var(--line-color);
     
     background-color: #f360f6;
+    /*! background-image: ; */
 }
 
 .page2 .v2 .droparea{
@@ -286,7 +293,6 @@
     bottom:0.5vh;
     font-size: 2vh;
     font-family: Perfect-Dos;
-    mix-blend-mode: difference;
 }
 
 .page2 .portico{
