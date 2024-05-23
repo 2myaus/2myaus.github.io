@@ -1,6 +1,6 @@
 .page2{
     --line-color: #000;
-    --line-weight: 0.3vh;
+    --line-weight: 0.2vh;
 
     --bottom-height: 6vh;
     --garage-door-width: 83.5vh;
@@ -33,7 +33,8 @@
     --post-container-base-height: 27.1vh;
     --post-container-depth: 3vh;
     
-    --shadow-color: #0048;
+    --shadow-opacity:0.5;
+    --shadow-color: #004;
 
     transform: perspective(100vh);
     transform-style: preserve-3d;
@@ -43,7 +44,7 @@
 }
 
 .page2.focus{
-    transform: perspective(100vh) translateZ(45vh) translateY(-12vh) translateX(2vh) /*rotateX(-15deg) rotateY(45deg)*/;
+    transform: perspective(100vh) translateZ(63vh) translateY(-4vh) translateX(3.3vh) /*rotateX(-15deg) rotateY(45deg)*/;
 }
 
 .page2 .wall{
@@ -144,6 +145,7 @@
     
     transform:translateX(-10vh);
     background-color:var(--shadow-color);
+    opacity:var(--shadow-opacity);
     filter:blur(0.2vh);
 }
 
@@ -170,6 +172,7 @@
     border: var(--line-weight) solid var(--line-color);
 }
 
+/*
 .page2 .v1 .mainwindow::before{
     content:"";
     position:absolute;
@@ -195,7 +198,27 @@
     
     background-color: #f360f6;
 }
+*/
 
+.page2 .mainwindow .shade{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    z-index: 1;
+    box-sizing: border-box;
+    
+    background:linear-gradient(90deg, #000f, #000a 40%, #000a 60%, #000f);
+    
+    opacity:1;
+    transition: opacity 0.4s linear;
+}
+
+.page2.focus .mainwindow .shade{
+    opacity:0;
+}
 
 .page2 .v2{
     box-sizing: border-box;
@@ -221,6 +244,7 @@
     
     transform:translateX(-12vh) skewX(-12deg);
     background-color:var(--shadow-color);
+    opacity:var(--shadow-opacity);
     border-radius: 1vh;
     filter:blur(0.2vh);
 }
@@ -239,6 +263,7 @@
     overflow: clip;
 }
 
+/*
 .page2 .v2 .mainwindow::before{
     content:"";
     position:absolute;
@@ -263,9 +288,8 @@
     border-left: var(--line-weight) solid var(--line-color);
     
     background-color: #f360f6;
-    /*! background-image: ; */
 }
-
+*/
 .page2 .v2 .droparea{
     position:absolute;
     bottom:14.4%;
@@ -291,6 +315,35 @@
     background: radial-gradient(circle at 140% 10%, #ee4cde 30% , #753de8 100%);
 }
 
+.page2 .postcontainer .posttext{
+    text-align: center;
+    position: absolute;
+    left:50%;
+    bottom:2vh;
+    padding: 0.8vh;
+    font-size: 2vh;
+    line-height: 1.8vh;
+    font-family: monospace;
+    transform:translateX(-50%) scaleY(1.4);
+    border: calc(var(--line-weight) * 0.5) var(--line-color) solid;
+    color:#000;
+    pointer-events: none;
+    user-select: none;
+}
+
+.page2 .postcontainer::before{
+    position: absolute;
+    top:14%;
+    left:10%;
+    bottom:50%;
+    right:10%;
+    box-sizing: border-box;
+    
+    background-color: #000;
+    border-radius: 0.6vh;
+    content:"";
+}
+
 .page2 .postcontainer::after{
     box-sizing: border-box;
     position: absolute;
@@ -300,7 +353,7 @@
     height: calc(var(--post-container-base-height) - 5.7vh);
     border: var(--line-weight) solid var(--line-color);
     
-    background: linear-gradient(90deg, var(--shadow-color), #0000 80%), #843aea;
+    background: linear-gradient(90deg, #0048, #0040 80%), #843aea;
     
     content:"";
 }
@@ -314,6 +367,7 @@
     height: var(--post-container-height);
     
     background-color: var(--shadow-color);
+    opacity:var(--shadow-opacity);
     filter:blur(0.2vh);
 }
 
@@ -326,6 +380,7 @@
     content:"";
     
     background-color: var(--shadow-color);
+    opacity:var(--shadow-opacity);
 }
 
 .page2 .floor .pshadow{
@@ -336,6 +391,7 @@
     left: 50%;
     width: 4vh;
     background-color: var(--shadow-color);
+    opacity:var(--shadow-opacity);
     
     transform-origin: top;
     transform:translateX(34.2vh);
@@ -373,7 +429,7 @@
     transform-origin: left;
     transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(90deg) skewX(calc(-1 * var(--portico-angle))) translateZ(-0.2vh);
     background-color: #c664cc;
-    background-image: linear-gradient(var(--shadow-color), var(--shadow-color));
+    background-image: linear-gradient(#0048, #0048);
 }
 
 .page2 .portico::after{
@@ -388,7 +444,7 @@
     transform-origin: right;
     transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(-90deg) skewX(var(--portico-angle))translateZ(-0.2vh);
     background-color: #dc60c4;
-    background-image: linear-gradient(var(--shadow-color), var(--shadow-color));
+    background-image: linear-gradient(#0048, #0048);
 }
 
 .page2 .wall .pshadow{
@@ -403,6 +459,7 @@
     
     --bottom-shadow-hgt: 2vh;
     filter:blur(0.2vh);
+    opacity:var(--shadow-opacity);
 }
 
 .page2 .wall .pshadow::before{
@@ -444,6 +501,7 @@
     left: 50%;
     width: 60vh;
     background-color: var(--shadow-color);
+    opacity:var(--shadow-opacity);
     transform-origin: top;
     transform:translateX(-51vh) skewX(70deg);
     
