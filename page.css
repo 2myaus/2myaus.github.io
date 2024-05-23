@@ -146,9 +146,9 @@ body{
 .page{
 	position:sticky;
 	min-height: 100vh;
-	/*overflow-x:hidden;*/
 	box-sizing:border-box;
 	/*border-bottom:10px solid black;*/
+	background-color: white;
 }
 
 .page1{

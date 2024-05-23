@@ -13,7 +13,7 @@
     --portico-depth: 16vh;
 
     --tile-wall-top-gap: 37.1%;
-    --tile-bg-size: 7.32vh;
+    --tile-bg-size: 7.4vh;
     
     --floor-tile-size: 4vh;
 
@@ -52,6 +52,8 @@
     right:0;
     bottom:var(--bottom-height);
     background: linear-gradient(190deg, #c557d1, #df6ac5 20%, #8023f3 100%);
+    border-bottom: var(--line-color) var(--line-weight) solid;
+    box-sizing: border-box;
 }
 
 .page2 .wall .garagedoor{
@@ -284,6 +286,22 @@
     
     transform:translateZ(var(--post-container-depth));
     border-radius: 1vh;
+    
+    background: radial-gradient(circle at 140% 10%, #ee4cde 30% , #753de8 100%);
+}
+
+.page2 .postcontainer::after{
+    box-sizing: border-box;
+    position: absolute;
+    left:30%;
+    right:30%;
+    top: 100%;
+    height: calc(var(--post-container-base-height) - 5.7vh);
+    border: var(--line-weight) solid var(--line-color);
+    
+    background: linear-gradient(90deg, var(--shadow-color), #0000 80%), #843aea;
+    
+    content:"";
 }
 
 .page2 .credit{
