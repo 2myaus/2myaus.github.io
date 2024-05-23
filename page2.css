@@ -1,6 +1,6 @@
 .page2{
     --line-color: #000;
-    --line-weight: 0.6vh;
+    --line-weight: 0.3vh;
 
     --bottom-height: 6vh;
     --garage-door-width: 83.5vh;
@@ -32,6 +32,8 @@
     --post-container-height: 16.4vh;
     --post-container-base-height: 27.1vh;
     --post-container-depth: 3vh;
+    
+    --shadow-color: #0006;
 
     transform: perspective(100vh);
     transform-style: preserve-3d;
@@ -116,7 +118,23 @@
 
     transform:translateX(var(--machine-center-offset)) translateZ(var(--machine-depth));
 
-    background: linear-gradient(-100deg, #f078b9, #ac63e2);
+    --background: linear-gradient(-100deg, #f078b9, #ac63e2);
+    
+    background: radial-gradient(circle at 230% 10%, rgba(239,123,171,1) 50%, rgba(141,90,230,1) 95%);
+    
+    border-radius: 1vh;
+}
+
+.page2 .wall .v1shadow{
+    box-sizing: border-box;
+    width:var(--machine1-width);
+    height:calc(var(--machine1-height) - 2vh);
+    position:absolute;
+    bottom:0;
+    left: calc(50% + var(--machine-gap)*0.5);
+    
+    transform:translateX(-10vh);
+    background-color:var(--shadow-color);
 }
 
 .page2 .v1 .mainwindow{
@@ -127,6 +145,9 @@
     height:52%;
     box-sizing: border-box;
     border: var(--line-weight) solid var(--line-color);
+    border-radius: 1vh;
+    overflow:clip;
+    background: linear-gradient(90deg, #6bcefa 6%, #f476fe 20%, #f476fe 80%, #6bcefa 94%);
 }
 
 .page2 .v1 .droparea{
@@ -137,6 +158,32 @@
     height:17%;
     box-sizing: border-box;
     border: var(--line-weight) solid var(--line-color);
+}
+
+.page2 .v1 .mainwindow::before{
+    content:"";
+    position:absolute;
+    top:0%;
+    left:0%;
+    bottom:0;
+    width:4%;
+    box-sizing: border-box;
+    border-right: var(--line-weight) solid var(--line-color);
+    
+    background-color: #f360f6;
+}
+
+.page2 .v1 .mainwindow::after{
+    content:"";
+    position:absolute;
+    top:0%;
+    right:0%;
+    bottom:0;
+    width:4%;
+    box-sizing: border-box;
+    border-left: var(--line-weight) solid var(--line-color);
+    
+    background-color: #f360f6;
 }
 
 
@@ -151,7 +198,20 @@
 
     transform:translateX(var(--machine-center-offset)) translateZ(var(--machine-depth));
 
-    background: linear-gradient(-100deg, #c264f3, #813ce5);
+    background: radial-gradient(circle at 230% 10%, #dc59f9 50%, #893bf1 95%);
+    border-radius: 1vh;
+}
+
+.page2 .wall .v2shadow{
+    width:var(--machine2-width);
+    height:calc(var(--machine2-height));
+    position:absolute;
+    bottom:-1.8vh;
+    right: calc(50% + var(--machine-gap)*0.5);
+    
+    transform:translateX(-12vh) skewX(-12deg);
+    background-color:var(--shadow-color);
+    border-radius: 1vh
 }
 
 .page2 .v2 .mainwindow{
@@ -162,6 +222,36 @@
     height:52%;
     box-sizing: border-box;
     border: var(--line-weight) solid var(--line-color);
+    border-radius: 2vh;
+    
+    background: linear-gradient(90deg, #6bcefa 6%, #f476fe 20%, #f476fe 88%, #6bcefa 98%);
+    overflow: clip;
+}
+
+.page2 .v2 .mainwindow::before{
+    content:"";
+    position:absolute;
+    top:0%;
+    left:0%;
+    bottom:0;
+    width:5%;
+    box-sizing: border-box;
+    border-right: var(--line-weight) solid var(--line-color);
+    
+    background-color: #f360f6;
+}
+
+.page2 .v2 .mainwindow::after{
+    content:"";
+    position:absolute;
+    top:0%;
+    right:0%;
+    bottom:0;
+    width:2%;
+    box-sizing: border-box;
+    border-left: var(--line-weight) solid var(--line-color);
+    
+    background-color: #f360f6;
 }
 
 .page2 .v2 .droparea{
@@ -184,6 +274,7 @@
     border: var(--line-weight) solid var(--line-color);
     
     transform:translateZ(var(--post-container-depth));
+    border-radius: 1vh;
 }
 
 .page2 .credit{
@@ -225,6 +316,8 @@
     border:inherit;
     transform-origin: left;
     transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(90deg) skewX(calc(-1 * var(--portico-angle))) translateY(-0.15vh) translateZ(-0.4vh);
+    background-color: #c664cc;
+    background-image: linear-gradient(var(--shadow-color), var(--shadow-color));
 }
 
 .page2 .portico::after{
@@ -238,7 +331,38 @@
     border:inherit;
     transform-origin: right;
     transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(-90deg) skewX(var(--portico-angle)) translateY(-0.15vh) translateZ(-0.4vh);
+    background-color: #dc60c4;
+    background-image: linear-gradient(var(--shadow-color), var(--shadow-color));
 }
+
+.page2 .wall .pshadow{
+    position: absolute;
+    top: calc(var(--garage-door-top-gap) - var(--portico-height) * 0.5 - 1.25vh);
+    height:var(--portico-height);
+    left:50%;
+    width:calc(var(--portico-width) + 0.6vh);
+    transform:translateX(-50%);
+    
+    --background-color: var(--shadow-color);
+    
+    --bottom-shadow-hgt: 2vh;
+}
+
+.page2 .wall .pshadow::before{
+    position: absolute;
+    top: 0;
+    height: calc(100% + var(--bottom-shadow-hgt));
+    right:0;
+    width:100vw;
+    transform-origin: bottom;
+    transform:skewX(-10deg);
+    
+    content:"";
+    
+    background-color: var(--shadow-color);
+}
+
+
 
 .page2 .floor{
     position: absolute;
@@ -253,6 +377,18 @@
     background-size: var(--floor-tile-size) var(--floor-tile-size), var(--floor-tile-size) var(--floor-tile-size), 100% 100%;
     
     transform:rotateX(90deg) translateZ(var(--bottom-height)) translateY(calc(var(--bottom-height) * 4));
+}
+
+.page2 .floor .vshadow{
+    position:absolute;
+    --height: 6vh;
+    bottom:calc(var(--bottom-height) * 4 - var(--height));
+    height:var(--height);
+    left: 50%;
+    width: 60vh;
+    background-color: var(--shadow-color);
+    transform-origin: top;
+    transform:translateX(-51vh) skewX(70deg);
 }
 
 .page2 .credit *{
