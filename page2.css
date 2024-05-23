@@ -42,7 +42,7 @@
 }
 
 .page2.focus{
-    transform: perspective(100vh) translateZ(45vh) translateY(-12vh) translateX(2vh);
+    transform: perspective(100vh) translateZ(45vh) translateY(-12vh) translateX(2vh) /*rotateX(-15deg) rotateY(45deg)*/;
 }
 
 .page2 .wall{
@@ -374,12 +374,12 @@
     box-sizing: border-box;
     top:0;
     left:0;
-    height:104%;/*calc(100% * cos(var(--portico-angle)));*/
+    height:100%;
     width:20vh;
     content:"";
     border:inherit;
     transform-origin: left;
-    transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(90deg) skewX(calc(-1 * var(--portico-angle))) translateY(-0.15vh) translateZ(-0.4vh);
+    transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(90deg) skewX(calc(-1 * var(--portico-angle))) translateZ(-0.2vh);
     background-color: #c664cc;
     background-image: linear-gradient(var(--shadow-color), var(--shadow-color));
 }
@@ -389,12 +389,12 @@
     box-sizing: border-box;
     top:0;
     right:0;
-    height:104%;/*calc(100% * cos(var(--portico-angle)));*/
+    height:100%;
     width:20vh;
     content:"";
     border:inherit;
     transform-origin: right;
-    transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(-90deg) skewX(var(--portico-angle)) translateY(-0.15vh) translateZ(-0.4vh);
+    transform: rotateX(calc(-1 * var(--portico-angle))) rotateY(-90deg) skewX(var(--portico-angle))translateZ(-0.2vh);
     background-color: #dc60c4;
     background-image: linear-gradient(var(--shadow-color), var(--shadow-color));
 }
