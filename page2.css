@@ -39,6 +39,7 @@
     transform-style: preserve-3d;
     
     transition: transform 1s ease-in-out;
+    z-index: 0;
 }
 
 .page2.focus{
