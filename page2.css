@@ -343,15 +343,6 @@
     filter:blur(0.2vh);
 }
 
-.page2 .credit{
-    z-index: 1000;
-    position: absolute;
-    left:0.5vw;
-    bottom:0.5vh;
-    font-size: 2vh;
-    font-family: Perfect-Dos;
-}
-
 .page2 .portico{
     position: absolute;
 
@@ -457,10 +448,38 @@
     transform:translateX(-51vh) skewX(70deg);
     
     filter:blur(0.2vh);
+    pointer-events: none;
 }
 
-.page2 .credit *{
-    color:white;
+.page2 .floor .credit{
+    position: absolute;
+    z-index: -1;
+    left:calc(50% - 39vh);
+    --height: 2vh;
+    bottom:calc(var(--bottom-height) * 3 + 3vh);
+    font-size: 1.4vh;
+    font-family: Perfect-Dos;
+    transform: scaleY(2);
+    transition: transform 0.4s;
+}
+
+.page2 .floor .credit::after{
+    position: absolute;
+    top:-50%;
+    bottom:-100%;
+    right:-100%;
+    left:0;
+    content:"";
+    z-index: -1;
+}
+
+.page2 .floor .credit:hover{
+    transform: scaleY(2) translateX(-18vh) scale(1.4);
+}
+
+.page2 .floor .credit *{
+    text-decoration: none;
+    color:#fff;
 }
 
 .page2 .ref{
