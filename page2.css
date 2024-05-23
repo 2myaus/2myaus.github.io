@@ -33,7 +33,7 @@
     --post-container-base-height: 27.1vh;
     --post-container-depth: 3vh;
     
-    --shadow-color: #0006;
+    --shadow-color: #0048;
 
     transform: perspective(100vh);
     transform-style: preserve-3d;
@@ -135,6 +135,7 @@
     
     transform:translateX(-10vh);
     background-color:var(--shadow-color);
+    filter:blur(0.2vh);
 }
 
 .page2 .v1 .mainwindow{
@@ -211,7 +212,8 @@
     
     transform:translateX(-12vh) skewX(-12deg);
     background-color:var(--shadow-color);
-    border-radius: 1vh
+    border-radius: 1vh;
+    filter:blur(0.2vh);
 }
 
 .page2 .v2 .mainwindow{
@@ -346,6 +348,7 @@
     --background-color: var(--shadow-color);
     
     --bottom-shadow-hgt: 2vh;
+    filter:blur(0.2vh);
 }
 
 .page2 .wall .pshadow::before{
@@ -389,6 +392,8 @@
     background-color: var(--shadow-color);
     transform-origin: top;
     transform:translateX(-51vh) skewX(70deg);
+    
+    filter:blur(0.2vh);
 }
 
 .page2 .credit *{
