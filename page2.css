@@ -117,6 +117,18 @@
     background-position: 6vh 0;
 }
 
+.page2 .mainwindow{
+    padding: 1vh;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vh;
+}
+
+.page2 .dummy{
+    background: #000;
+    opacity: 0.5;
+}
+
 .page2 .v1{
     box-sizing: border-box;
     border: var(--line-weight) solid var(--line-color);
