@@ -42,6 +42,8 @@ body{
 	animation-delay: 0.8s;
 	animation-fill-mode: backwards;
 	z-index: 10;
+
+	--text-color: #222;
 }
 
 .window.closed{
@@ -191,14 +193,15 @@ body{
 	padding-left: 40vw;
 	--background-color:#0008;
 	mix-blend-mode: overlay;
+	user-select: none;
 
 	z-index: 2;
 }
 
 .page1 .window1{
 	top:6vh;
-	left:6vw;
-	width:35vw;
+	left:3vw;
+	width:38vw;
 	height:40vw;
 }
 
@@ -208,4 +211,58 @@ body{
 	width:50vw;
 	height:30vw;
 	animation-delay: 1s;
+}
+
+.page1 .window .window-content{
+	font-size: 1vw;
+	width:100%;
+	font-family: Perfect-Dos;
+	color: var(--text-color);
+}
+
+.page1 .window .window-content .title{
+	font-size: 4vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
+}
+
+.page1 .window .window-content .center{
+	text-align: center;
+	width:100%;
+}
+
+.page1 .window .window-content .subtitle{
+	font-size: 2vw;
+}
+
+.page1 .window .window-content .content-text{
+	padding: 1vw;
+}
+
+.page1 .window .window-content .subdivider{
+	width:100%;
+	display: block;
+	height:2vh;
+}
+
+.page1 .window .window-content .col-layout{
+	display: flex;
+	flex-direction: row;
+	--cols-gap: 2vw;
+	gap: var(--cols-gap);
+}
+
+.page1 .window .window-content .col-layout .content-col{
+	position:sticky;
+	flex: 1 1 100%;
+}
+
+.page1 .window .window-content .col-layout > .content-col + .content-col::before {
+	  --divider-width: 0.1vw;
+    content:"";
+    width:0px;
+    height:100%;
+    border-right: var(--divider-width) solid var(--text-color);
+    position: absolute;
+    left: calc(-0.5 * var(--cols-gap) - var(--divider-width) / 2);
 }

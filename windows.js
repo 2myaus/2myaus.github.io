@@ -38,6 +38,7 @@
 						top:50%;
 						transform:translate(-50%, -50%);
 						z-index:10;
+						width:10vw;
 					`;
 					sadface.src = "nso_sad.webp";
 	
