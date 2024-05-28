@@ -44,6 +44,7 @@ body{
 	z-index: 10;
 
 	--text-color: #222;
+	--head-hgt: 2vw;
 }
 
 .window.closed{
@@ -76,7 +77,7 @@ body{
 
 .window .windowhead{
 	user-select: none;
-	height:2vw;
+	height:var(--head-hgt);
 	width:100%;
 	display:flex;
 	flex-direction: row;
@@ -218,6 +219,8 @@ body{
 	width:100%;
 	font-family: Perfect-Dos;
 	color: var(--text-color);
+	overflow:scroll;
+	height: calc(100% - var(--head-hgt))
 }
 
 .page1 .window .window-content .title{
