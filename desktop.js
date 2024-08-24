@@ -49,13 +49,8 @@ desktop.addEventListener("mouseup", function(event){
 	const Xf = event.x;
 	const Yf = event.y;
 	
-	let cssItemSize;
-	let cssGapSize;
-	Array.from(document.styleSheets[0].cssRules).forEach(cssRule => { //TODO: Please do this better somehow :(
-		if(document.querySelector(cssRule.selectorText) != desktop){return;}
-		cssItemSize = cssRule.style.getPropertyValue("--item-size");
-		cssGapSize = cssRule.style.getPropertyValue("--item-gap");
-	});
+	let cssItemSize = getComputedStyle(desktop).getPropertyValue("--item-size");
+	let cssGapSize = getComputedStyle(desktop).getPropertyValue("--item-gap");
 
 	const gridGapPx = window.innerWidth * parseFloat(cssGapSize) * 0.01;
 	const gridDistPx = window.innerWidth * parseFloat(cssItemSize) * 0.01;

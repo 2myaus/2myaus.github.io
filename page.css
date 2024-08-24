@@ -47,6 +47,10 @@ body{
 	--head-hgt: 2vw;
 }
 
+.window.noanim{
+	animation: none;
+}
+
 .window.closed{
 	transform:scale(0);
 	opacity:0.4;
@@ -92,22 +96,30 @@ body{
 	overflow:clip;
 }
 
-.window .windowhead .button{
-	width:1.1vw;
-	height:1vw;
+.window .button{
+	font-family: Perfect-Dos;
 	border: 0.2vw #d2d5d9 solid;
 	border-top-color: #f2f3f2;
 	border-left-color: #f2f3f2;
 	background-color: #cbcbcb;
 	box-sizing: border-box;
 	box-shadow: 0.1vw 0.1vw 0.05vw #0004;
-	font-family: Marlett;
 	font-size: 1vw;
 	line-height: 0.76vw;
 	text-align: center;
+	user-select: none;
+	padding-left: 0.3vw;
+	padding-right:0.2vw;
 }
 
-.window .windowhead .button:active{
+.window .windowhead .button{
+	padding:0;
+	font-family: Marlett;
+  width:1.1vw;
+	height:1vw;
+}
+
+.window .button:active{
 	border: 0.2vw #424549 solid;
 	border-top-color: #626362;
 	border-left-color: #626362;
@@ -144,6 +156,10 @@ body{
 	top:0.2vw;
 	height:1.6vw;
 	line-height: 1.2vw;
+}
+
+.window .window-content{
+	box-sizing: border-box;
 }
 
 .page{
