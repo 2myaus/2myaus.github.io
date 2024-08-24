@@ -269,3 +269,66 @@ body{
     position: absolute;
     left: calc(-0.5 * var(--cols-gap) - var(--divider-width) / 2);
 }
+
+.page1 .desktop{
+	z-index: 9;
+	
+	--item-size:3vw;
+	--item-gap:4vw;
+	
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	display:grid;
+	
+	grid-template-rows:repeat(auto-fill, var(--item-size));
+	grid-template-columns: repeat(auto-fill, var(--item-size));
+	grid-auto-flow: column;
+	
+	gap:var(--item-gap);
+	
+	padding: 2vw;
+}
+
+.page1 .desktop .desktop-item{
+	position: sticky;
+	user-select:none;
+}
+
+.page1 .desktop .desktop-item .desktop-item-icon{
+	position: sticky;
+	box-sizing: border-box;
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	user-select: none;
+	pointer-events: none;
+}
+
+.page1 .desktop .desktop-item.selected::after{
+	--select-offset: 0.4vw;
+	content:"";
+	position:absolute;
+	top:calc(var(--select-offset) * -1);
+	left:calc(var(--select-offset) * -1);
+	right:calc(var(--select-offset) * -1);
+	bottom:calc(var(--select-offset) * -1);
+	border: 0.15vw dashed #fdf;
+	opacity:0.8;
+	
+	transform:translate(calc(1px * var(--dragoff-x)), calc(1px * var(--dragoff-y)));
+}
+
+.page1 .desktop .desktop-item .desktop-item-label{
+	position: absolute;
+	top:110%;
+	left:50%;
+	transform: translateX(-50%);
+	color:white;
+	font-family: Perfect-Dos;
+	font-size: 1.2vw;
+	text-align: center;
+}
