@@ -1,5 +1,36 @@
 const page1 = document.querySelector(".page.page1");
 
+function getParentItem(element){
+	if(!element){return null;}
+	else if(element.classList.contains("item")){ return element; }
+	else if(element.classList.contains("itemcontainer")){ return null; }
+	return getParentItem(element.parentElement);
+}
+
+page1.addEventListener("click", (event) => {
+	const parentItem = getParentItem(event.target);
+	if(!parentItem){
+		if(!event.target.classList.contains("itemcontainer")){
+			return;
+		}
+		event.target.querySelectorAll(".item").forEach((child) => {
+			child.classList.remove("selected");
+		});
+		return;
+	}
+	parentItem.parentElement.querySelectorAll(".item").forEach((child) => {
+		child.classList.remove("selected");
+	});
+	parentItem.classList.add("selected");
+
+	if((Date.now() - parentItem.lastClicked) < 500){
+		if(parentItem.getAttribute("onDoubleClick")){
+			eval.call(parentItem, parentItem.getAttribute("onDoubleClick"));
+		}
+	}
+	parentItem.lastClicked = Date.now();
+});
+
 function getWindow(x,y,width,height,title){
 	const cWindow = document.createElement("div");
 	cWindow.classList.add("window","noanim");
@@ -60,42 +91,6 @@ function getWindow(x,y,width,height,title){
 
 
 function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onconfirm,oncancel){
-	/*
-	const popup = document.createElement("div");
-	popup.classList.add("window","noanim");
-	popup.style.position = "absolute"
-	popup.style.top = y;
-	popup.style.left = x;
-	popup.style.width = width;
-	popup.style.height = height;
-	if(!width){
-		popup.style.width = "15vw";
-	}
-	if(!height){
-		popup.style.height = "15vw";
-	}
-	popup.style.zIndex = "25";
-	const popup_head = document.createElement("div");
-	popup_head.classList.add("windowhead");
-	const popup_content = document.createElement("div");
-	popup_content.classList.add("window-content");
-	popup_content.style.padding = "2vw";
-	popup_content.innerHTML = content;
-
-	popup.appendChild(popup_head);
-	popup.appendChild(popup_content);
-
-	const popup_head_icon = document.createElement("div");
-	popup_head_icon.classList.add("icon");
-	popup_head_icon.src="";//TODO: Add a popup icon
-	const popup_head_title = document.createElement("div");
-	popup_head_title.classList.add("title");
-	popup_head_title.textContent = title;
-	const popup_head_closebutton = document.createElement("div");
-	popup_head_closebutton.classList.add("close","button");
-	popup_head_closebutton.textContent = "r";
-	*/
-
 	const popup = getWindow(x,y,width,height,title);
 	const popup_head = popup.querySelector(".windowhead");
 	const popup_content = popup.querySelector(".window-content");
@@ -114,12 +109,6 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 		popup.remove();
 	};
 
-	/*
-	popup_head.appendChild(popup_head_icon);
-	popup_head.appendChild(popup_head_title);
-	popup_head.appendChild(popup_head_closebutton);
-	*/
-
 	const popup_confirm_button = document.createElement("div");
 	popup_confirm_button.classList.add("button");
 	popup_confirm_button.textContent = confirmlabel;
@@ -136,7 +125,6 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 		}
 		popup.remove();
 	};
-
 
 	const popup_cancel_button = document.createElement("div");
 	popup_cancel_button.classList.add("button");
@@ -155,4 +143,63 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 
 	page1.appendChild(popup);
 	return popup;
+}
+
+function getItem(label, iconSrc){
+	const creatingItem = document.createElement("div");
+	creatingItem.classList.add("item");
+	const itemIcon = document.createElement("img");
+	itemIcon.classList.add("item-icon");
+	itemIcon.src = iconSrc;
+	creatingItem.appendChild(itemIcon);
+	const itemLabel = document.createElement("div");
+	itemLabel.classList.add("item-label");
+	itemLabel.textContent = label;
+	creatingItem.appendChild(itemLabel);
+
+	return creatingItem;
+}
+
+function createFileBrowser(x, y, startingPath){
+	const fileBrowser = getWindow(x, y, "40vw", "20vw", "secret_exposer.exe");
+	const fileBrowserContent = fileBrowser.querySelector(".window-content");
+	const fileContainer = document.createElement("div");
+	fileContainer.classList.add("itemcontainer");
+	fileContainer.style.position = "absolute";
+	fileContainer.style.bottom = "0";
+	fileContainer.style.left = "0";
+	fileContainer.style.right = "0";
+	fileContainer.style.top = "0";
+	fileBrowserContent.appendChild(fileContainer);
+
+	fileBrowser.changePath = (newPath) => {
+		fileContainer.querySelectorAll("*").forEach((child) => {
+			child.remove();
+		});
+
+		fetch(`fakefs${newPath}dir.json`)
+			.then(response => response.json())
+			.then(dirinfo => {
+				console.log(dirinfo);
+				dirinfo.dirs.forEach(dirName => {
+					const item = getItem(dirName, "assets/icon.png");
+					//TODO: Replace with a real icon
+					fileContainer.appendChild(item);
+				});
+	
+				dirinfo.files.forEach(fileName => {
+					let iconsrc = "assets/icon.png";
+					//TODO: Determine icon based on file type
+					const item = getItem(fileName, iconsrc);
+					fileContainer.appendChild(item);
+				});
+				//TODO: Display files and stuff
+			});
+
+		fileBrowser.path = newPath;
+	}
+	fileBrowser.changePath(startingPath);
+
+	page1.appendChild(fileBrowser);
+	return fileBrowser;
 }

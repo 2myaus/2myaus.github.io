@@ -9,14 +9,14 @@
 			<canvas id="citycanvas" width="2000"></canvas>
 			<script src="js/citygencvs.js"></script>
 
-			<div class="desktop">
-				<div class="desktop-item" itemdroppedon="draggedOntoRecycleBin()" style="grid-area: 1 / 1;">
-					<img src="assets/icon_trash_can.png" class="desktop-item-icon">
-					<div class="desktop-item-label">Recycle Bin</div>
+			<div class="desktop itemcontainer">
+				<div class="item" itemdroppedon="draggedOntoRecycleBin()" style="grid-area: 1 / 1;">
+					<img src="assets/icon_trash_can.png" class="item-icon">
+					<div class="item-label">Recycle Bin</div>
 				</div>
-				<div class="desktop-item">
-					<img src="assets/icon_search.png" class="desktop-item-icon">
-					<div class="desktop-item-label">My Computer</div>
+				<div class="item" onDoubleClick="createFileBrowser('10vw', '10vw', '/');">
+					<img src="assets/icon_search.png" class="item-icon">
+					<div class="item-label">My Computer</div>
 				</div>
 			</div>
 

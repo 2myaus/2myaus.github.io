@@ -160,6 +160,7 @@ body{
 
 .window .window-content{
 	box-sizing: border-box;
+	position:sticky;
 }
 
 .page{
@@ -286,17 +287,10 @@ body{
     left: calc(-0.5 * var(--cols-gap) - var(--divider-width) / 2);
 }
 
-.page1 .desktop{
-	z-index: 9;
-	
+.page1 .itemcontainer{
 	--item-size:3vw;
 	--item-gap:4vw;
 	
-	position: absolute;
-	top:0;
-	left:0;
-	right:0;
-	bottom:0;
 	display:grid;
 	
 	grid-template-rows:repeat(auto-fill, var(--item-size));
@@ -305,15 +299,25 @@ body{
 	
 	gap:var(--item-gap);
 	
-	padding: 2vw;
+	padding: calc(var(--item-gap) * 0.5);
 }
 
-.page1 .desktop .desktop-item{
+.page1 .desktop{
+	z-index: 9;
+	
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+.page1 .itemcontainer .item{
 	position: sticky;
 	user-select:none;
 }
 
-.page1 .desktop .desktop-item .desktop-item-icon{
+.page1 .itemcontainer .item .item-icon{
 	position: sticky;
 	box-sizing: border-box;
 	position: absolute;
@@ -324,7 +328,7 @@ body{
 	pointer-events: none;
 }
 
-.page1 .desktop .desktop-item.selected::after{
+.page1 .itemcontainer .item.selected::after{
 	--select-offset: 0.4vw;
 	content:"";
 	position:absolute;
@@ -338,7 +342,7 @@ body{
 	transform:translate(calc(1px * var(--dragoff-x)), calc(1px * var(--dragoff-y)));
 }
 
-.page1 .desktop .desktop-item .desktop-item-label{
+.page1 .itemcontainer .item .item-label{
 	position: absolute;
 	top:110%;
 	left:50%;

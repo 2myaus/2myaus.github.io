@@ -7,14 +7,8 @@ const killComputer = () => {
 	document.head.innerHTML="";
 };
 
-function getParentItem(element){
-	if(element.classList.contains("desktop-item")){ return element; }
-	else if(element.classList.contains("desktop")){ return null; }
-	return getParentItem(element.parentElement);
-}
-
 function setSelectedItem(itemElement){
-	const otherSelected = desktop.querySelectorAll(".desktop-item.selected");
+	const otherSelected = desktop.querySelectorAll(".item.selected");
 	otherSelected.forEach(selectedItem => {
 		selectedItem.classList.remove("selected");
 	});
@@ -24,7 +18,7 @@ function setSelectedItem(itemElement){
 }
 
 function draggedOntoRecycleBin(){
-	const droppedLabel = dragging.item.querySelector('.desktop-item-label');
+	const droppedLabel = dragging.item.querySelector('.item-label');
 	if(!droppedLabel){return;}
 	if(droppedLabel.innerText == "My Computer"){killComputer();}
 	
@@ -32,7 +26,7 @@ function draggedOntoRecycleBin(){
 
 function itemDraggedOntoItem(itemTarget, itemDragged){
 	if(!itemTarget.getAttribute("itemdroppedon")){return;}
-	eval(itemTarget.getAttribute("itemdroppedon"));
+	eval.call(itemTarget, itemTarget.getAttribute("itemdroppedon"));
 }
 
 desktop.addEventListener("mousedown", function(event){
@@ -58,12 +52,12 @@ desktop.addEventListener("mouseup", function(event){
 	const Dx = Xf-dragging.Xi;
 	const Dy = Yf-dragging.Yi;
 
-	const finalGridPosX = 1+Math.round((event.x-(gridGapPx+gridDistPx)*0.5)/(gridGapPx+gridDistPx));
-	const finalGridPosY = 1+Math.round((event.y-(gridGapPx+gridDistPx)*0.5)/(gridGapPx+gridDistPx));
+	const finalGridPosX = 1+Math.floor((event.x)/(gridGapPx+gridDistPx));
+	const finalGridPosY = 1+Math.floor((event.y)/(gridGapPx+gridDistPx));
 
 	let dragHandled = false;
 
-	desktop.querySelectorAll(".desktop-item").forEach(item => {
+	desktop.querySelectorAll(".item").forEach(item => {
 		if(item == dragging.item){return;}
 		if(item.style.getPropertyValue("grid-row") != finalGridPosY.toString()){return;}
 		if(item.style.getPropertyValue("grid-column") != finalGridPosX.toString()){return;}
