@@ -143,7 +143,7 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 						z-index:10;
 						width:10vw;
 					`;
-					sadface.src = "nso_sad.webp";
+					sadface.src = "assets/nso_sad.webp";
 	
 					darkoverlay.appendChild(sadface);
 					setTimeout(() => {

@@ -124,6 +124,14 @@ const drawCity = () => {
 		getBuilding();
 	}
 
+	eval(atob('Y3R4LmZvbnQgPSAiMjBweCBQZXJmZWN0LURvcyI7CmN0eC5maWxsU3R5bGUgPSAiI2ZmZjIiOwpjdHguZmlsbFRleHQoImNpdHlnZW4gYnkgbXlhdW15YXVAbXlhdW15YXUuZGV2Iiwgd2lkLTQwMCwgMjApOw=='));
+
+	/*
+	ctx.font = "20px Perfect-Dos";
+	ctx.fillStyle = "#fff2";
+	ctx.fillText("citygen by myaumyau@myaumyau.dev", wid-400, 20);
+	*/
+
 	let p1 = {
 		x:-Math.random()*wid*0.5,
 		y:hgt*0.25+Math.random()*hgt*0.5

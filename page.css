@@ -1,14 +1,14 @@
 @font-face {
     font-family: Perfect-Dos;
-    src: url("Perfect\ DOS\ VGA\ 437\ Win.ttf");
+    src: url("fonts/Perfect\ DOS\ VGA\ 437\ Win.ttf");
 }
 @font-face {
     font-family: Kitty-M;
-    src: url("PerfectDOSKittyM.ttf");
+    src: url("fonts/PerfectDOSKittyM.ttf");
 }
 @font-face {
     font-family: Marlett;
-    src: url("marlett.ttf");
+    src: url("fonts/marlett.ttf");
 }
 
 body{
@@ -235,7 +235,7 @@ body{
 	width:100%;
 	font-family: Perfect-Dos;
 	color: var(--text-color);
-	overflow:scroll;
+	overflow-y:scroll;
 	height: calc(100% - var(--head-hgt))
 }
 
