@@ -24,8 +24,8 @@ page1.addEventListener("click", (event) => {
 	parentItem.classList.add("selected");
 
 	if((Date.now() - parentItem.lastClicked) < 500){
-		if(parentItem.getAttribute("onDoubleClick")){
-			eval.call(parentItem, parentItem.getAttribute("onDoubleClick"));
+		if(parentItem.getAttribute("ondoubleclick")){
+			eval.call(parentItem, parentItem.getAttribute("ondoubleclick"));
 		}
 	}
 	parentItem.lastClicked = Date.now();
@@ -109,37 +109,43 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 		popup.remove();
 	};
 
-	const popup_confirm_button = document.createElement("div");
-	popup_confirm_button.classList.add("button");
-	popup_confirm_button.textContent = confirmlabel;
-	popup_confirm_button.style.position = "absolute";
-	popup_confirm_button.style.minWidth = "4vw";
-	popup_confirm_button.style.minHeight = "2vw";
-	popup_confirm_button.style.bottom = "1vw";
-	popup_confirm_button.style.left = "2vw";
-	popup_confirm_button.style.paddingTop = "0.4vw";
-	popup_confirm_button.onclick = () => {
-		if(onconfirm){
-			onconfirm(popup);
-			return;
-		}
-		popup.remove();
-	};
+	let popup_confirm_button
+	if(confirmlabel){
+		popup_confirm_button = document.createElement("div");
+		popup_confirm_button.classList.add("button");
+		popup_confirm_button.textContent = confirmlabel;
+		popup_confirm_button.style.position = "absolute";
+		popup_confirm_button.style.minWidth = "4vw";
+		popup_confirm_button.style.minHeight = "2vw";
+		popup_confirm_button.style.bottom = "1vw";
+		popup_confirm_button.style.left = "2vw";
+		popup_confirm_button.style.paddingTop = "0.4vw";
+		popup_confirm_button.onclick = () => {
+			if(onconfirm){
+				onconfirm(popup);
+				return;
+			}
+			popup.remove();
+		};
+	}
 
-	const popup_cancel_button = document.createElement("div");
-	popup_cancel_button.classList.add("button");
-	popup_cancel_button.textContent = cancellabel;
-	popup_cancel_button.style.position = "absolute";
-	popup_cancel_button.style.minWidth = "4vw";
-	popup_cancel_button.style.minHeight = "2vw";
-	popup_cancel_button.style.bottom = "1vw";
-	popup_cancel_button.style.right = "2vw";
-	popup_cancel_button.style.paddingTop = "0.4vw";
-	popup_cancel_button.onclick = popup_head_closebutton.onclick;
+	let popup_cancel_button
+	if(cancellabel){
+		popup_cancel_button = document.createElement("div");
+		popup_cancel_button.classList.add("button");
+		popup_cancel_button.textContent = cancellabel;
+		popup_cancel_button.style.position = "absolute";
+		popup_cancel_button.style.minWidth = "4vw";
+		popup_cancel_button.style.minHeight = "2vw";
+		popup_cancel_button.style.bottom = "1vw";
+		popup_cancel_button.style.right = "2vw";
+		popup_cancel_button.style.paddingTop = "0.4vw";
+		popup_cancel_button.onclick = popup_head_closebutton.onclick;
+	}
 
 
-	popup.appendChild(popup_confirm_button);
-	popup.appendChild(popup_cancel_button);
+	if(popup_confirm_button){popup.appendChild(popup_confirm_button)};
+	if(popup_cancel_button){popup.appendChild(popup_cancel_button)};
 
 	page1.appendChild(popup);
 	return popup;
@@ -158,6 +164,17 @@ function getItem(label, iconSrc){
 	creatingItem.appendChild(itemLabel);
 
 	return creatingItem;
+}
+
+function openFile(fakefsPath){
+	//TODO: Determine how file is read based on file type
+	let fileName;
+	fetch(`fakefs${fakefsPath}`)
+		.then(r=> r.text())
+		.then(fileText=>{
+			createPopup("15vw", "15vw", null, null, fakefsPath.split('/').pop(), fileText, 'idc', null, null, null);
+		}
+	);
 }
 
 function createFileBrowser(x, y, startingPath){
@@ -184,6 +201,7 @@ function createFileBrowser(x, y, startingPath){
 				dirinfo.dirs.forEach(dirName => {
 					const item = getItem(dirName, "assets/icon.png");
 					//TODO: Replace with a real icon
+					item.setAttribute("ondoubleclick", `this.parentElement.changePath(${newPath+dirName});`);
 					fileContainer.appendChild(item);
 				});
 	
@@ -191,6 +209,7 @@ function createFileBrowser(x, y, startingPath){
 					let iconsrc = "assets/icon.png";
 					//TODO: Determine icon based on file type
 					const item = getItem(fileName, iconsrc);
+					item.setAttribute("ondoubleclick",`openFile('${newPath+fileName}');`);
 					fileContainer.appendChild(item);
 				});
 				//TODO: Display files and stuff
