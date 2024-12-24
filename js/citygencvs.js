@@ -145,7 +145,10 @@ const drawCity = () => {
 
 
 	const gl = c2.getContext("webgl");
-	gl.clearColor(1, 1, 1, 1);
+
+	gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
+
+	gl.clearColor(1, 1, 1, 0);
 	gl.clear(gl.COLOR_BUFFER_BIT);
 	const vertexShaderSource = `
 	attribute vec2 a_position;
@@ -170,7 +173,7 @@ const drawCity = () => {
 		d.x = sqrt(d.x/250.0)*250.0;
 		float len = length(d);
 
-		float b = sin(3.141*len/t) * (4.0*t/(len+4.0*t))+0.7;
+		float b = sin(3.1416*len/t) * (4.0*t/(len+4.0*t))+0.7;
 		if((mod((floor(fragCoord.x/4.0)), 2.0)!=mod((floor(fragCoord.y/4.0)),2.0))){
 			b *= abs(b) * 0.4;
 		}
@@ -213,6 +216,11 @@ const drawCity = () => {
 	gl.uniform1f(periodUniformLocation, t1);
 
 	gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+	gl.deleteShader(vertexShader);
+	gl.deleteShader(fragmentShader);
+	gl.deleteProgram(program);
 };
+
 drawCity();
 window.addEventListener("resize", drawCity);
