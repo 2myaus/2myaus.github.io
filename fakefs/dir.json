@@ -1,10 +1,12 @@
 {
 
 "files":[
-	"root.txt"
+	"root.txt",
+	"passwds.txt"
 ],
 
 "dirs":[
+	"yap/"
 ]
 
 }

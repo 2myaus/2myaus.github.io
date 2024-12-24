@@ -25,7 +25,9 @@ page1.addEventListener("click", (event) => {
 
 	if((Date.now() - parentItem.lastClicked) < 500){
 		if(parentItem.getAttribute("ondoubleclick")){
-			eval.call(parentItem, parentItem.getAttribute("ondoubleclick"));
+			//This is so insecure by the way
+			new Function(parentItem.getAttribute("ondoubleclick")).call(parentItem)
+			//eval(`( () => { ${parentItem.getAttribute("ondoubleclick")} }).call(parentItem);`);
 		}
 	}
 	parentItem.lastClicked = Date.now();
@@ -101,6 +103,10 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 
 	popup_content.innerHTML = content;
 
+	popup_content.style.height = `calc(100% - var(--head-hgt) - 3.5vw)`;
+	popup_content.style.boxSizing = "border-box";
+	popup_content.style.borderBottom = "2px solid #666";
+
 	popup_head_closebutton.onclick = () => {
 		if(oncancel){
 			oncancel(popup);
@@ -172,7 +178,7 @@ function openFile(fakefsPath){
 	fetch(`fakefs${fakefsPath}`)
 		.then(r=> r.text())
 		.then(fileText=>{
-			createPopup("15vw", "15vw", null, null, fakefsPath.split('/').pop(), fileText, 'idc', null, null, null);
+			createPopup("20vw", "20vw", null, null, fakefsPath.split('/').pop(), fileText, 'idc', null, null, null);
 		}
 	);
 }
@@ -199,14 +205,14 @@ function createFileBrowser(x, y, startingPath){
 			.then(dirinfo => {
 				console.log(dirinfo);
 				dirinfo.dirs.forEach(dirName => {
-					const item = getItem(dirName, "assets/icon.png");
+					const item = getItem(dirName, "assets/icon_desktop_folder.png");
 					//TODO: Replace with a real icon
-					item.setAttribute("ondoubleclick", `this.parentElement.changePath(${newPath+dirName});`);
+					item.setAttribute("ondoubleclick", `console.log(this.parentElement.parentElement); this.parentElement.parentElement.parentElement.changePath(${newPath+dirName});`);
 					fileContainer.appendChild(item);
 				});
-	
+
 				dirinfo.files.forEach(fileName => {
-					let iconsrc = "assets/icon.png";
+					let iconsrc = "assets/icon_no_image.png";
 					//TODO: Determine icon based on file type
 					const item = getItem(fileName, iconsrc);
 					item.setAttribute("ondoubleclick",`openFile('${newPath+fileName}');`);

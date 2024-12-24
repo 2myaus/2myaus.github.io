@@ -29,10 +29,10 @@
 					return;
 				}
 				window_n.classList.add("closed");
-	
+
 				setTimeout(() => {
 					window_n.classList.remove("closed");
-	
+
 					const darkoverlay = document.createElement("div");
 					darkoverlay.style = `
 						z-index:9;
@@ -46,7 +46,7 @@
 						opacity:1;
 					`;
 					window_n.appendChild(darkoverlay);
-	
+
 					const sadface = document.createElement("img");
 					sadface.style = `
 						transform-origin:center center;
@@ -58,16 +58,16 @@
 						width:10vw;
 					`;
 					sadface.src = "assets/nso_sad.webp";
-	
+
 					darkoverlay.appendChild(sadface);
 					setTimeout(() => {
 						darkoverlay.style.opacity = 0;
 					}, 1100);
-	
+
 					setTimeout(() => {
 						darkoverlay.remove();
 					}, 1500);
-				}, Math.random() * 800 + 400);
+				}, Math.random() * 3200 + 400);
 			}
 		});
 

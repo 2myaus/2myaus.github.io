@@ -237,7 +237,7 @@ body{
 	font-family: Perfect-Dos;
 	color: var(--text-color);
 	overflow-y:scroll;
-	height: calc(100% - var(--head-hgt))
+	height: calc(100% - var(--head-hgt));
 }
 
 .page1 .window .window-content .title{
@@ -290,21 +290,21 @@ body{
 .page1 .itemcontainer{
 	--item-size:3vw;
 	--item-gap:4vw;
-	
+
 	display:grid;
-	
+
 	grid-template-rows:repeat(auto-fill, var(--item-size));
 	grid-template-columns: repeat(auto-fill, var(--item-size));
 	grid-auto-flow: column;
-	
+
 	gap:var(--item-gap);
-	
+
 	padding: calc(var(--item-gap) * 0.5);
 }
 
 .page1 .desktop{
 	z-index: 9;
-	
+
 	position: absolute;
 	top:0;
 	left:0;
@@ -338,7 +338,7 @@ body{
 	bottom:calc(var(--select-offset) * -1);
 	border: 0.15vw dashed #fdf;
 	opacity:0.8;
-	
+
 	transform:translate(calc(1px * var(--dragoff-x)), calc(1px * var(--dragoff-y)));
 }
 
@@ -346,6 +346,8 @@ body{
 	position: absolute;
 	top:110%;
 	left:50%;
+	max-width: 6vw;
+	overflow-wrap:break-word;
 	transform: translateX(-50%);
 	color:white;
 	font-family: Perfect-Dos;
