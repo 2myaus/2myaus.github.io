@@ -163,23 +163,26 @@ const drawCity = () => {
 	uniform vec2 u_pointpos;
 	uniform float u_t;
 
+	#define dotsize 5.0
+
 	void main() {
 		float t = 120.0;
 
 		vec2 fragCoord = vec2(gl_FragCoord.x, u_resolution.y-gl_FragCoord.y);
-		fragCoord.x += sin(fragCoord.y*1.0)*u_resolution.x*0.1;
+		fragCoord.x += sin(fragCoord.y*2.0)*u_resolution.x*0.05;
 		vec2 d = abs(fragCoord.xy-u_pointpos);
 		d.x *= sqrt(fragCoord.y/u_resolution.y);
 		d.x = sqrt(d.x/250.0)*250.0;
 		float len = length(d);
 
 		float b = sin(3.1416*len/t) * (4.0*t/(len+4.0*t))+0.7;
-		if((mod((floor(fragCoord.x/4.0)), 2.0)!=mod((floor(fragCoord.y/4.0)),2.0))){
-			b *= abs(b) * 0.4;
-		}
-		b *= fragCoord.y/u_resolution.y;
-		vec3 clr = vec3(0.90, 0.51, 0.78);
-		b *= 0.8;
+
+		b *= ((0.25*sin(fragCoord.x*0.8 / dotsize * 3.141593*2.0)+0.25)) +
+    ((0.25*sin(fragCoord.y / dotsize * 3.141593*2.0)+0.25));
+		//b *= fragCoord.y/u_resolution.y;
+		b = floor(b + 0.5);
+
+		vec3 clr = vec3(0.90, 0.61, 0.78);
 		gl_FragColor = vec4(clr, b);
 	}
 	`;
