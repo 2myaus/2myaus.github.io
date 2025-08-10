@@ -1,108 +1,116 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>myaumyaudotdev</title>
-		<link rel="stylesheet" type="text/css" href="css/page.css" />
-	</head>
-	<body>
-		<div class="page page1">
-			<canvas id="lightingcanvas" width="2000"></canvas>
-			<canvas id="citycanvas" width="2000"></canvas>
-			<script src="js/citygencvs.js"></script>
 
-			<div class="desktop itemcontainer">
-				<div class="item" itemdroppedon="draggedOntoRecycleBin()" style="grid-area: 1 / 1;">
-					<img src="assets/icon_trash_can.png" class="item-icon">
-					<div class="item-label">Recycle Bin</div>
+<head>
+	<title>myaumyaudotdev</title>
+	<link rel="stylesheet" type="text/css" href="css/page.css" />
+</head>
+
+<body>
+	<div class="page page1">
+		<canvas id="lightingcanvas" width="2000"></canvas>
+		<canvas id="citycanvas" width="2000"></canvas>
+		<script src="js/citygencvs.js"></script>
+
+		<div class="desktop itemcontainer">
+			<div class="item" itemdroppedon="draggedOntoRecycleBin()" style="grid-area: 1 / 1;">
+				<img src="assets/icon_trash_can.png" class="item-icon">
+				<div class="item-label">Recycle Bin</div>
+			</div>
+			<div class="item" onDoubleClick="createFileBrowser('10vw', '10vw', '/');">
+				<img src="assets/icon_search.png" class="item-icon">
+				<div class="item-label">My Computer</div>
+			</div>
+		</div>
+
+		<div class="window window1 noclose">
+			<div class="windowhead">
+				<img class="icon" src="assets/icon.png"></img>
+				<div class="title">myaumyau.exe</div>
+				<div class="minimize button">0</div>
+				<div class="maximize button">1</div>
+				<div class="close button">r</div>
+			</div>
+			<div class="window-content">
+				<div class="center title">
+					myaumyau-dotdev
 				</div>
-				<div class="item" onDoubleClick="createFileBrowser('10vw', '10vw', '/');">
-					<img src="assets/icon_search.png" class="item-icon">
-					<div class="item-label">My Computer</div>
+				<div class="center">
+					the webpage of a basic 19 year-old developer and engineer
+				</div>
+				<div class="center">
+					<a href="https://github.com/2myaus">github</a>
+					<span style="width:10vw;display:inline-block;"></span>
+					<!-- <a href="mailto:myaumyau@myaumyau.dev ">email</a> -->
+				</div>
+				<div class="subdivider"></div>
+				<div class="center subtitle">
+					about myaumyau
+				</div>
+				<div class="col-layout">
+					<div class="content-col content-text">
+						<div class="center subtitle">
+							who are u
+						</div>
+						<div class="subdivider"></div>
+						hi, this website was written by myaumyau. i like to show off cool code sometimes, which is why this website
+						is here (at least for now).
+
+						i'm an american student currently living in boston and attending northeastern university.
+
+					</div>
+					<div class="content-col content-text">
+						<div class="center subtitle">
+							code i know
+						</div>
+						<div class="subdivider"></div>
+						<div class="col-layout">
+							<div class="content-col">
+								c / c++ <br />
+								javascript <br />
+								html/css
+							</div>
+							<div class="content-col">
+								c# <br />
+								java <br />
+								python
+							</div>
+						</div>
+						<div class="subdivider"></div>
+						<div class="subdivider"></div>
+						can you really define someone's mind by a set of six labels?
+						i like the feel of low-level languages, but i don't really mind using something more suited to whatever task
+						i have.
+						thank you for reading this philosophy lesson by myau myau
+					</div>
+				</div>
+				<div class="content-text" style="position:absolute;bottom:0vw;left:50%;transform:translateX(-50%);width:80%;">
+					<div class="center">
+						this site was made in html/css/js by myaumyau
+					</div>
 				</div>
 			</div>
+		</div>
 
-			<div class="window window1 noclose">
-				<div class="windowhead">
-					<img class="icon" src="assets/icon.png"></img>
-					<div class="title">myaumyau.exe</div>
-					<div class="minimize button">0</div>
-					<div class="maximize button">1</div>
-					<div class="close button">r</div>
-				</div>
-				<div class="window-content">
-					<div class="center title">
-						myaumyau-dotdev
-					</div>
-					<div class="center">
-						the webpage of a basic 19 year-old developer and engineer
-					</div>
-					<div class="center">
-						<a href="https://github.com/2myaus">github</a>
-						<span style="width:10vw;display:inline-block;"></span>
-						<!-- <a href="mailto:myaumyau@myaumyau.dev ">email</a> -->
-					</div>
-					<div class="subdivider"></div>
-					<div class="center subtitle">
-						about myaumyau
-					</div>
-					<div class="col-layout">
-						<div class="content-col content-text">
-							<div class="center subtitle">
-								who are u
-							</div>
-							<div class="subdivider"></div>
-							hi, this website was written by myaumyau. i like to show off cool code sometimes, which is why this website is here (at least for now).
-
-							i'm an american student currently living in boston and attending northeastern university.
-
-						</div>
-						<div class="content-col content-text">
-							<div class="center subtitle">
-								code i know
-							</div>
-							<div class="subdivider"></div>
-							<div class="col-layout">
-								<div class="content-col">
-									c / c++ <br/>
-									javascript <br/>
-									html/css
-								</div>
-								<div class="content-col">
-									c# <br/>
-									java <br/>
-									python
-								</div>
-							</div>
-							<div class="subdivider"></div>
-							<div class="subdivider"></div>
-							can you really define someone's mind by a set of six labels?
-							i like the feel of low-level languages, but i don't really mind using something more suited to whatever task i have.
-							thank you for reading this philosophy lesson by myau myau
-						</div>
-					</div>
-					<div class="content-text" style="position:absolute;bottom:0vw;left:50%;transform:translateX(-50%);width:80%;">
-						<div class="center">
-							this site was made in html/css/js by myaumyau
-						</div>
-					</div>
-				</div>
+		<div class="window window2 noclose">
+			<div class="windowhead">
+				<img class="icon" src="assets/icon.png"></img>
+				<div class="title">dotdev.exe</div>
+				<div class="minimize button">0</div>
+				<div class="maximize button">1</div>
+				<div class="close button">r</div>
 			</div>
-
-			<div class="window window2 noclose">
-				<div class="windowhead">
-					<img class="icon" src="assets/icon.png"></img>
-					<div class="title">dotdev.exe</div>
-					<div class="minimize button">0</div>
-					<div class="maximize button">1</div>
-					<div class="close button">r</div>
+			<div class="window-content">
+				<div class="center title">
+					myaumyau-network
 				</div>
-				<div class="window-content">
-					<div class="center title">
-						myaumyau-network
-					</div>
-					<div class="col-layout">
-						<div class="content-col center">
-							<div class="center subtitle">play these cool games i made</div>
+				<div class="col-layout">
+					<div class="content-col center">
+						<div class="center subtitle">
+							the myaumyau network is currently cooked because i didn't want to renew my domain. come back later for
+							treats
+						</div>
+						<!-- <div class="center subtitle">play these cool games i made</div>
 							<div class="subdivider"></div>
 							<div class="subdivider"></div>
 							<a href="https://proto.myaumyau.dev/misc/bagt">bad asteroid game thing</a>
@@ -123,22 +131,23 @@
 							<div class="subdivider"></div>
 							(and i promise i'll add more websites soon. okay?)
 						</div>
+						-->
 					</div>
 				</div>
 			</div>
 
 			<div class="dark-overlay">myaumyau-dotdev
 				<script>
-					(()=>{
+					(() => {
 						const title = document.currentScript.parentElement;
 						const titletext = title.innerText;
 						let i = 0;
-						title.innerText="";
+						title.innerText = "";
 						const typeChar = () => {
 							i++;
-							title.innerText=titletext.substring(0, i);
-							if(i > titletext.length) return;
-							setTimeout(typeChar,200);
+							title.innerText = titletext.substring(0, i);
+							if (i > titletext.length) return;
+							setTimeout(typeChar, 200);
 						}
 						setTimeout(typeChar, 1400);
 					})();
@@ -149,5 +158,6 @@
 		<script src="js/desktop.js"></script>
 		<script src="js/windows.js"></script>
 		<!--<script src="js/scroll.js"></script>-->
-	</body>
+</body>
+
 </html>
