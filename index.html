@@ -143,23 +143,23 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="dark-overlay">2myaus-website
-		<script>
-			(() => {
-				const title = document.currentScript.parentElement;
-				const titletext = title.innerText;
-				let i = 0;
-				title.innerText = "";
-				const typeChar = () => {
-					i++;
-					title.innerText = titletext.substring(0, i);
-					if (i > titletext.length) return;
-					setTimeout(typeChar, 200);
-				}
-				setTimeout(typeChar, 1400);
-			})();
-		</script>
+		<div class="dark-overlay">2myaus-website
+			<script>
+				(() => {
+					const title = document.currentScript.parentElement;
+					const titletext = title.innerText;
+					let i = 0;
+					title.innerText = "";
+					const typeChar = () => {
+						i++;
+						title.innerText = titletext.substring(0, i);
+						if (i > titletext.length) return;
+						setTimeout(typeChar, 200);
+					}
+					setTimeout(typeChar, 1400);
+				})();
+			</script>
+		</div>
 	</div>
 	<script src="js/apps.js"></script>
 	<script src="js/desktop.js"></script>
