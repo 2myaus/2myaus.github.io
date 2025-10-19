@@ -2,8 +2,10 @@
 <html>
 
 <head>
-	<title>myaumyaudotdev</title>
+	<title>2myauswebsite</title>
 	<link rel="stylesheet" type="text/css" href="css/page.css" />
+	<link rel="preload" href="css/pace.css" />
+	<link rel="preload" href="assets/nso_sad.webp" />
 </head>
 
 <body>
@@ -26,14 +28,14 @@
 		<div class="window window1 noclose">
 			<div class="windowhead">
 				<img class="icon" src="assets/icon.png"></img>
-				<div class="title">myaumyau.exe</div>
+				<div class="title">2myaus.exe</div>
 				<div class="minimize button">0</div>
 				<div class="maximize button">1</div>
 				<div class="close button">r</div>
 			</div>
 			<div class="window-content">
 				<div class="center title">
-					myaumyau-dotdev
+					2myaus-website
 				</div>
 				<div class="center">
 					the webpage of a basic 19 year-old developer and engineer
@@ -42,11 +44,10 @@
 					<a href="https://github.com/2myaus">github</a>
 					<span style="width:10vw;display:inline-block;"></span>
 					<a href="https://www.linkedin.com/in/petrovda">linkedin</a>
-					<!-- <a href="mailto:myaumyau@myaumyau.dev ">email</a> -->
 				</div>
 				<div class="subdivider"></div>
 				<div class="center subtitle">
-					about myaumyau
+					about 2myaus
 				</div>
 				<div class="col-layout">
 					<div class="content-col content-text">
@@ -57,7 +58,8 @@
 						i am an american student attending northeastern university for computer engineering.
 						i like to show off cool code sometimes, which is why this website is here (at least for now).
 						i can code software and simple websites but recently (upon becoming a university student)
-						have started specializing in hardware and embedded development (see trinkets)
+						have started specializing in hardware and embedded development (see trinkets).
+						my legal name is daniil if you need that for a reason
 					</div>
 					<div class="content-col content-text">
 						<div class="center subtitle">
@@ -87,7 +89,7 @@
 				</div>
 				<div class="content-text" style="position:absolute;bottom:0vw;left:50%;transform:translateX(-50%);width:80%;">
 					<div class="center">
-						this site was made in html/css/js by myaumyau
+						this site was made in html/css/js by 2myaus
 					</div>
 				</div>
 			</div>
@@ -103,57 +105,66 @@
 			</div>
 			<div class="window-content">
 				<div class="center title">
-					myaumyau-trinkets
+					2myaus-trinkets
 				</div>
 				<div class="col-layout">
 					<div class="content-col center">
-						<!-- <div class="center subtitle">play these cool games i made</div>
-							<div class="subdivider"></div>
-							<div class="subdivider"></div>
-							<a href="https://proto.myaumyau.dev/misc/bagt">bad asteroid game thing</a>
-							<div class="subdivider"></div>
-							<a href="https://proto.myaumyau.dev/misc/doodleswing/">doodle swing</a>
-							<div class="subdivider"></div>
-							<a href="https://proto.myaumyau.dev/misc/factorygame/">factory game</a>
-							<div class="subdivider"></div>
-							(i promise i'll get around to adding thumbnails some day)
-						</div>
-						<div class="center content-col">
-							<div class="center subtitle">or see some other websites by me</div>
-							<div class="subdivider"></div>
-							<div class="subdivider"></div>
-							<a href="https://proto.myaumyau.dev/misc/fail">myaumyau.fail</a>
-							<div class="subdivider"></div>
-							<a href="https://myaumyau.dev/2myaus.github.io_OLD/">the old myaumyau.dev</a>
-							<div class="subdivider"></div>
-							(and i promise i'll add more websites soon. okay?)
-						</div>
-						-->
+						<div class="center subtitle">projects that i like</div>
+						<div class="subdivider"></div>
+						<div class="subdivider"></div>
+						<a href="https://github.com/2myaus/shrimp">shrimp computer</a><br />
+						this is a custom computer that i am making, specifically the cpu and memory.
+						hardware design was done in vhdl and the assembler was written in c++.
+						the work-in-progress compiler bindings and os will be written in c.
+						<div class="subdivider"></div>
+						<a href="https://github.com/2myaus/ChesscatPlusPlus">chesscat</a><br />
+						a chess game controller i wrote in high school. much of my early c++ learning
+						came from this project and it did work so i will show it off.
+						<div class="subdivider"></div>
+						<a href="https://github.com/2myaus/catears">catears</a><br />
+						a passive network scanner i also wrote in high school. it listens very carefully
+						for broadcasted packets and keeps track of who sent them.
+						it was named for fun and not for a resume but here we are.
+						<div class="subdivider"></div>
+						<!-- (i promise i'll get around to adding thumbnails some day) -->
+						<!-- who wrote that.. what an empty promise -->
+					</div>
+					<div class="center content-col">
+						<div class="center subtitle">other shiny things</div>
+						<div class="subdivider"></div>
+						<div class="subdivider"></div>
+						<a href="https://2myaus.github.io/2myaus.github.io_OLD">the old version of this website</a>
+						<div class="subdivider"></div>
+						<a href="https://github.com/2myaus/grimm">my red base16 color scheme</a>
+						<div class="subdivider"></div>
+						<!-- (and i promise i'll add more websites soon. okay?) -->
+						<!-- what a nerd, you didn't even major in a software field -->
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="dark-overlay">myaumyau-dotdev
-			<script>
-				(() => {
-					const title = document.currentScript.parentElement;
-					const titletext = title.innerText;
-					let i = 0;
-					title.innerText = "";
-					const typeChar = () => {
-						i++;
-						title.innerText = titletext.substring(0, i);
-						if (i > titletext.length) return;
-						setTimeout(typeChar, 200);
-					}
-					setTimeout(typeChar, 1400);
-				})();
-			</script>
-		</div>
-		<script src="js/apps.js"></script>
-		<script src="js/desktop.js"></script>
-		<script src="js/windows.js"></script>
-		<!--<script src="js/scroll.js"></script>-->
+	</div>
+	<div class="dark-overlay">2myaus-website
+		<script>
+			(() => {
+				const title = document.currentScript.parentElement;
+				const titletext = title.innerText;
+				let i = 0;
+				title.innerText = "";
+				const typeChar = () => {
+					i++;
+					title.innerText = titletext.substring(0, i);
+					if (i > titletext.length) return;
+					setTimeout(typeChar, 200);
+				}
+				setTimeout(typeChar, 1400);
+			})();
+		</script>
+	</div>
+	<script src="js/apps.js"></script>
+	<script src="js/desktop.js"></script>
+	<script src="js/windows.js"></script>
+	<!--<script src="js/scroll.js"></script>-->
 </body>
 
 </html>
