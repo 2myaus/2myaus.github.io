@@ -357,3 +357,9 @@ body {
 	font-size: 1.2vw;
 	text-align: center;
 }
+
+@media only screen and (max-width: 768px) {
+	.page1 #lightingcanvas {
+		display: none;
+	}
+}
