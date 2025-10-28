@@ -148,6 +148,8 @@ body {
 	position: absolute;
 	text-transform: uppercase;
 	left: 2.2vw;
+	width: 70%;
+	overflow: clip;
 }
 
 .window .windowhead .icon {
@@ -296,9 +298,9 @@ body {
 
 	display: grid;
 
-	grid-template-rows: repeat(auto-fill, var(--item-size));
 	grid-template-columns: repeat(auto-fill, var(--item-size));
-	grid-auto-flow: column;
+	grid-auto-rows: var(--item-size);
+	grid-auto-flow: row;
 
 	gap: var(--item-gap);
 

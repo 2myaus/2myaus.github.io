@@ -1,19 +1,17 @@
 {
-
-"files":[
-	"groundctrl.txt",
-	"ty_nso.txt",
-	"stupid.txt",
-	"safari.txt",
-  	"wired.txt",
-	"try.txt",
-        "metro.txt",
-	"rainbowgirl.txt",
-	"grass.txt",
-	"lace.txt"
-],
-
-"dirs":[
-]
-
+	"files": [
+		"groundctrl.txt",
+		"ty_nso.txt",
+		"stupid.txt",
+		"safari.txt",
+		"wired.txt",
+		"try.txt",
+		"metro.txt",
+		"rainbowgirl.txt",
+		"grass.txt",
+		"lace.txt",
+		"dont_code.txt",
+		"group_projects.txt"
+	],
+	"dirs": []
 }

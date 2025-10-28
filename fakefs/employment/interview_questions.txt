@@ -1,0 +1,3 @@
+no please I can't do interviews. ask me technical questions instead. please
+
+my biggest strength is that i lose track of time while debugging with cli gdb
