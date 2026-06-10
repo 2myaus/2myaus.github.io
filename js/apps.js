@@ -1,16 +1,16 @@
 const page1 = document.querySelector(".page.page1");
 
-function getParentItem(element){
-	if(!element){return null;}
-	else if(element.classList.contains("item")){ return element; }
-	else if(element.classList.contains("itemcontainer")){ return null; }
+function getParentItem(element) {
+	if (!element) { return null; }
+	else if (element.classList.contains("item")) { return element; }
+	else if (element.classList.contains("itemcontainer")) { return null; }
 	return getParentItem(element.parentElement);
 }
 
 page1.addEventListener("click", (event) => {
 	const parentItem = getParentItem(event.target);
-	if(!parentItem){
-		if(!event.target.classList.contains("itemcontainer")){
+	if (!parentItem) {
+		if (!event.target.classList.contains("itemcontainer")) {
 			return;
 		}
 		event.target.querySelectorAll(".item").forEach((child) => {
@@ -24,18 +24,18 @@ page1.addEventListener("click", (event) => {
 	parentItem.classList.add("selected");
 });
 
-function getWindow(x,y,width,height,title){
+function getWindow(x, y, width, height, title) {
 	const cWindow = document.createElement("div");
-	cWindow.classList.add("window","noanim");
+	cWindow.classList.add("window", "noanim");
 	cWindow.style.position = "absolute"
 	cWindow.style.top = y;
 	cWindow.style.left = x;
 	cWindow.style.width = width;
 	cWindow.style.height = height;
-	if(!width){
+	if (!width) {
 		cWindow.style.width = "15vw";
 	}
-	if(!height){
+	if (!height) {
 		cWindow.style.height = "15vw";
 	}
 	cWindow.style.zIndex = "11";
@@ -50,21 +50,33 @@ function getWindow(x,y,width,height,title){
 
 	const cWindow_head_icon = document.createElement("div");
 	cWindow_head_icon.classList.add("icon");
-	cWindow_head_icon.src="";//TODO: Add a popup icon
+	cWindow_head_icon.src = "";//TODO: Add a popup icon
 	const cWindow_head_title = document.createElement("div");
 	cWindow_head_title.classList.add("title");
 	cWindow_head_title.textContent = title;
 
 	const cWindow_head_minbutton = document.createElement("div");
-	cWindow_head_minbutton.classList.add("minimize","button");
+	cWindow_head_minbutton.classList.add("minimize", "button");
 	cWindow_head_minbutton.textContent = "0";
 
+	cWindow_head_minbutton.onclick = () => {
+		cWindow.remove();
+	};
+
 	const cWindow_head_maxbutton = document.createElement("div");
-	cWindow_head_maxbutton.classList.add("maximize","button");
+	cWindow_head_maxbutton.classList.add("maximize", "button");
 	cWindow_head_maxbutton.textContent = "1";
 
+	cWindow_head_maxbutton.onclick = () => {
+		if (cWindow.classList.contains("maximized")) {
+			cWindow.classList.remove("maximized");
+			return;
+		}
+		cWindow.classList.add("maximized");
+	};
+
 	const cWindow_head_closebutton = document.createElement("div");
-	cWindow_head_closebutton.classList.add("close","button");
+	cWindow_head_closebutton.classList.add("close", "button");
 	cWindow_head_closebutton.textContent = "r";
 
 	cWindow_head_closebutton.onclick = () => {
@@ -83,8 +95,75 @@ function getWindow(x,y,width,height,title){
 }
 
 
-function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onconfirm,oncancel){
-	const popup = getWindow(x,y,width,height,title);
+function createImagePopup(x, y, width, title, imagesrc, confirmlabel, cancellabel, onconfirm, oncancel) {
+	const popup = getWindow(x, y, width, "auto", title);
+	const popup_head = popup.querySelector(".windowhead");
+	const popup_content = popup.querySelector(".window-content");
+	const popup_head_closebutton = popup_head.querySelector(".close.button");
+
+	popup_head.querySelector(".minimize.button").remove();
+
+	popup_content.style.height = `calc(100% - var(--head-hgt))`;
+	popup_content.style.boxSizing = "border-box";
+	popup_content.style.padding = "0";
+
+	image_content = document.createElement("img");
+	image_content.src = imagesrc;
+	image_content.style.width = "100%";
+	popup_content.appendChild(image_content);
+
+	popup_head_closebutton.onclick = () => {
+		if (oncancel) {
+			oncancel(popup);
+			return;
+		}
+		popup.remove();
+	};
+
+	let popup_confirm_button;
+	if (confirmlabel) {
+		popup_confirm_button = document.createElement("div");
+		popup_confirm_button.classList.add("button");
+		popup_confirm_button.textContent = confirmlabel;
+		popup_confirm_button.style.position = "absolute";
+		popup_confirm_button.style.minWidth = "4vw";
+		popup_confirm_button.style.minHeight = "2vw";
+		popup_confirm_button.style.bottom = "1vw";
+		popup_confirm_button.style.left = "2vw";
+		popup_confirm_button.style.paddingTop = "0.4vw";
+		popup_confirm_button.onclick = () => {
+			if (onconfirm) {
+				onconfirm(popup);
+				return;
+			}
+			popup.remove();
+		};
+	}
+
+	let popup_cancel_button;
+	if (cancellabel) {
+		popup_cancel_button = document.createElement("div");
+		popup_cancel_button.classList.add("button");
+		popup_cancel_button.textContent = cancellabel;
+		popup_cancel_button.style.position = "absolute";
+		popup_cancel_button.style.minWidth = "4vw";
+		popup_cancel_button.style.minHeight = "2vw";
+		popup_cancel_button.style.bottom = "1vw";
+		popup_cancel_button.style.right = "2vw";
+		popup_cancel_button.style.paddingTop = "0.4vw";
+		popup_cancel_button.onclick = popup_head_closebutton.onclick;
+	}
+
+
+	if (popup_confirm_button) { popup.appendChild(popup_confirm_button) };
+	if (popup_cancel_button) { popup.appendChild(popup_cancel_button) };
+
+	page1.appendChild(popup);
+	return popup;
+}
+
+function createPopup(x, y, width, height, title, content, confirmlabel, cancellabel, onconfirm, oncancel) {
+	const popup = getWindow(x, y, width, height, title);
 	const popup_head = popup.querySelector(".windowhead");
 	const popup_content = popup.querySelector(".window-content");
 	const popup_head_closebutton = popup_head.querySelector(".close.button");
@@ -100,7 +179,7 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 	popup_content.style.borderBottom = "2px solid #666";
 
 	popup_head_closebutton.onclick = () => {
-		if(oncancel){
+		if (oncancel) {
 			oncancel(popup);
 			return;
 		}
@@ -108,7 +187,7 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 	};
 
 	let popup_confirm_button
-	if(confirmlabel){
+	if (confirmlabel) {
 		popup_confirm_button = document.createElement("div");
 		popup_confirm_button.classList.add("button");
 		popup_confirm_button.textContent = confirmlabel;
@@ -119,7 +198,7 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 		popup_confirm_button.style.left = "2vw";
 		popup_confirm_button.style.paddingTop = "0.4vw";
 		popup_confirm_button.onclick = () => {
-			if(onconfirm){
+			if (onconfirm) {
 				onconfirm(popup);
 				return;
 			}
@@ -128,7 +207,7 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 	}
 
 	let popup_cancel_button
-	if(cancellabel){
+	if (cancellabel) {
 		popup_cancel_button = document.createElement("div");
 		popup_cancel_button.classList.add("button");
 		popup_cancel_button.textContent = cancellabel;
@@ -142,14 +221,14 @@ function createPopup(x,y,width,height,title,content,confirmlabel,cancellabel,onc
 	}
 
 
-	if(popup_confirm_button){popup.appendChild(popup_confirm_button)};
-	if(popup_cancel_button){popup.appendChild(popup_cancel_button)};
+	if (popup_confirm_button) { popup.appendChild(popup_confirm_button) };
+	if (popup_cancel_button) { popup.appendChild(popup_cancel_button) };
 
 	page1.appendChild(popup);
 	return popup;
 }
 
-function getItem(label, iconSrc){
+function getItem(label, iconSrc) {
 	const creatingItem = document.createElement("div");
 	creatingItem.classList.add("item");
 	const itemIcon = document.createElement("img");
@@ -164,18 +243,24 @@ function getItem(label, iconSrc){
 	return creatingItem;
 }
 
-function openFile(fakefsPath){
-	//TODO: Determine how file is read based on file type
-	let fileName;
-	fetch(`fakefs${fakefsPath}`)
-		.then(r=> r.text())
-		.then(fileText=>{
-			createPopup("20vw", "20vw", null, null, fakefsPath.split('/').pop(), fileText, 'idc', null, null, null);
-		}
-	);
+function openFile(fakefsPath) {
+	extension = fakefsPath.toLowerCase().split(".").pop();
+	image_extensions = ["png", "jpg", "webp"];
+	if (image_extensions.includes(extension)) {
+		createImagePopup("20vw", "20vw", null, fakefsPath.split('/').pop(), `fakefs${fakefsPath}`, null, null, null, null);
+	}
+	else {
+		fetch(`fakefs${fakefsPath}`)
+			.then(r => r.text())
+			.then(
+				fileText => {
+					createPopup("20vw", "20vw", null, null, fakefsPath.split('/').pop(), fileText, 'idc', null, null, null);
+				}
+			);
+	}
 }
 
-function createFileBrowser(x, y, startingPath){
+function createFileBrowser(x, y, startingPath) {
 	const fileBrowser = getWindow(x, y, "40vw", "20vw", "secret_exposer.exe");
 	const fileBrowserContent = fileBrowser.querySelector(".window-content");
 	const fileContainer = document.createElement("div");
@@ -199,7 +284,7 @@ function createFileBrowser(x, y, startingPath){
 				dirinfo.dirs.forEach(dirName => {
 					const item = getItem(dirName, "assets/icon_desktop_folder.png");
 					//TODO: Replace with a real icon
-					item.setAttribute("ondblclick", `console.log(this.parentElement.parentElement); this.parentElement.parentElement.parentElement.changePath(${newPath+dirName});`);
+					item.setAttribute("ondblclick", `console.log(this.parentElement.parentElement); this.parentElement.parentElement.parentElement.changePath(${newPath + dirName});`);
 					fileContainer.appendChild(item);
 				});
 
@@ -207,7 +292,7 @@ function createFileBrowser(x, y, startingPath){
 					let iconsrc = "assets/icon_no_image.png";
 					//TODO: Determine icon based on file type
 					const item = getItem(fileName, iconsrc);
-					item.setAttribute("ondblclick",`openFile('${newPath+fileName}');`);
+					item.setAttribute("ondblclick", `openFile('${newPath + fileName}');`);
 					fileContainer.appendChild(item);
 				});
 				//TODO: Display files and stuff

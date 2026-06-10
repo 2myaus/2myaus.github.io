@@ -119,6 +119,7 @@ body {
 	font-family: Marlett;
 	width: 1.1vw;
 	height: 1vw;
+	z-index: 1;
 }
 
 .window .button:active {
@@ -150,6 +151,7 @@ body {
 	left: 2.2vw;
 	width: 70%;
 	overflow: clip;
+	z-index: 0;
 }
 
 .window .windowhead .icon {
@@ -161,6 +163,7 @@ body {
 	top: 0.2vw;
 	height: 1.6vw;
 	line-height: 1.2vw;
+	z-index: 0;
 }
 
 .window .window-content {

@@ -5,6 +5,7 @@
 	],
 	"dirs": [
 		"yap/",
-		"employment/"
+		"employment/",
+		"photos/"
 	]
 }
